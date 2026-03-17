@@ -476,6 +476,45 @@
             padding: 26px;
             box-shadow: var(--card-shadow);
         }
+
+        .subcategory {
+            margin-bottom: 16px;
+        }
+
+        .subcategory-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            user-select: none;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .subcategory-title:hover {
+            color: var(--accent-terracotta);
+        }
+
+        .toggle-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-icon.expanded {
+            transform: rotate(90deg);
+        }
+
+        .article-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+
+        .article-list.expanded {
+            max-height: 2000px;
+            opacity: 1;
+        }
         
         .subcategory {
             margin-bottom: 26px;
@@ -837,7 +876,7 @@
         <div class="subcategories-container">
           
           <div class="subcategory">
-            <h4 class="subcategory-title">📁 最新文章</h4>
+            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 最新文章</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -845,7 +884,7 @@
           </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title">📁 热门推荐</h4>
+            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 热门推荐</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -853,7 +892,7 @@
           </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title">📁 精选合集</h4>
+            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 精选合集</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -876,8 +915,8 @@
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 基础操作</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 基础操作</h4>
+          <div class="article-list" id="article-list-1">
             
         <a href="https://mp.weixin.qq.com/s/qhAXq3mxOzhaG1OXHgpLzg" target="_blank" class="article-item">
           <div class="article-title">CAD：快速计算器QC、Ctrl+8</div>
@@ -1051,8 +1090,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 图层管理</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 图层管理</h4>
+          <div class="article-list" id="article-list-2">
             
         <a href="https://mp.weixin.qq.com/s/Wcdl_m-FEuR_MdPH1GVR7w" target="_blank" class="article-item">
           <div class="article-title">CAD：图层的开关、隔离、冻结、锁定</div>
@@ -1090,8 +1129,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 块与动态块</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 块与动态块</h4>
+          <div class="article-list" id="article-list-3">
             
         <a href="https://mp.weixin.qq.com/s/E_Zeb8IY51KVKBqZrjym1Q" target="_blank" class="article-item">
           <div class="article-title">CAD：图块批量改名rename</div>
@@ -1121,8 +1160,8 @@
         </div>
       
           <div class="subcategory">
-            <h4 class="subcategory-title">📁 打印输出</h4>
-            <div class="article-list">
+            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 打印输出</h4>
+            <div class="article-list" id="article-list-4">
             
         <a href="https://mp.weixin.qq.com/s/F3dFQJaOYeTgExXVf6BTIw" target="_blank" class="article-item">
           <div class="article-title">CAD问题：关闭CAD打印PDF文件，文件自动打开的情况</div>
@@ -1136,8 +1175,8 @@
         </div>
         
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 天正系列</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 天正系列</h4>
+          <div class="article-list" id="article-list-5">
             
         <a href="https://mp.weixin.qq.com/s/NYQyPAExjXGzzoL7KEOZag" target="_blank" class="article-item">
           <div class="article-title">天正：长度统计（cdtj）</div>
@@ -1167,8 +1206,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 快捷键分享</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 快捷键分享</h4>
+          <div class="article-list" id="article-list-6">
             
         <a href="https://mp.weixin.qq.com/s/Rg5gBCaYOZNiEw3N0K1zQg" target="_blank" class="article-item">
           <div class="article-title">CAD、天正快捷键</div>
@@ -1182,8 +1221,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 问题排查</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 问题排查</h4>
+          <div class="article-list" id="article-list-7">
             
         <a href="https://mp.weixin.qq.com/s/Rj4534kC9bYBwRkG0lLKOQ" target="_blank" class="article-item">
           <div class="article-title">CAD问题：cad粘贴进另一个文件时显示无效</div>
@@ -1332,7 +1371,7 @@
         <div class="subcategories-container">
           
           <div class="subcategory">
-            <h4 class="subcategory-title">📁 基础入门</h4>
+            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 基础入门</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -1340,7 +1379,7 @@
           </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title">📁 插件教程</h4>
+            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 插件教程</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -1348,7 +1387,7 @@
           </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title">📁 快捷键</h4>
+            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 快捷键</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -1371,8 +1410,8 @@
         <div class="subcategories-container">
           
           <div class="subcategory">
-            <h4 class="subcategory-title">📁 Photoshop 技巧</h4>
-            <div class="article-list">
+            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 Photoshop 技巧</h4>
+            <div class="article-list" id="article-list-8">
             
         <a href="https://mp.weixin.qq.com/s/aNO4iAXm3rLLFZyGyk3OEw" target="_blank" class="article-item">
           <div class="article-title">PS：批量导出图片小技巧</div>
@@ -1386,8 +1425,8 @@
         </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title">📁 InDesign 排版</h4>
-            <div class="article-list">
+            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 InDesign 排版</h4>
+            <div class="article-list" id="article-list-9">
             
         <a href="https://mp.weixin.qq.com/s/RYpkIenz6rZsUvR0LH3eag" target="_blank" class="article-item">
           <div class="article-title">ID添加多页pdf</div>
@@ -1417,7 +1456,7 @@
         </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title">📁 快捷键汇总</h4>
+            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 快捷键汇总</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -1440,8 +1479,8 @@
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 对象操作</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 对象操作</h4>
+          <div class="article-list" id="article-list-10">
             
         <a href="https://mp.weixin.qq.com/s/i-Bx9oHxFWsd2TF4DkkLUA" target="_blank" class="article-item">
           <div class="article-title">PPT：免费PDF转PPT的方法</div>
@@ -1479,8 +1518,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 插件使用</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 插件使用</h4>
+          <div class="article-list" id="article-list-11">
             
         <a href="https://mp.weixin.qq.com/s/1kFqFCGWF0brB8_gjRFkCQ" target="_blank" class="article-item">
           <div class="article-title">PPT：超好用插件iSlide</div>
@@ -1494,8 +1533,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 底图处理</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 底图处理</h4>
+          <div class="article-list" id="article-list-12">
             
         <a href="https://mp.weixin.qq.com/s/9RFezb_ZgrwA7gp45Z-ZGw" target="_blank" class="article-item">
           <div class="article-title">PPT：原位置替换底图</div>
@@ -1524,8 +1563,8 @@
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 AI推荐</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 AI推荐</h4>
+          <div class="article-list" id="article-list-13">
             
         <a href="https://mp.weixin.qq.com/s/iAepSnP0SzLbLbAXM-NcyQ" target="_blank" class="article-item">
           <div class="article-title">AI推荐：告别本地部署风险！用扣子Coze云端养"小龙虾"</div>
@@ -1579,8 +1618,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 效率工具</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 效率工具</h4>
+          <div class="article-list" id="article-list-14">
             
         <a href="https://mp.weixin.qq.com/s/ORych-k7l_kby2WxTsSrMQ" target="_blank" class="article-item">
           <div class="article-title">免费caj转pdf方法！</div>
@@ -1641,8 +1680,8 @@
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 系统问题</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 系统问题</h4>
+          <div class="article-list" id="article-list-15">
             
         <a href="https://mp.weixin.qq.com/s/OSKwYhiPaeB2CRb2a06AtA" target="_blank" class="article-item">
           <div class="article-title">电脑问题：文件需要system的权限才能删除</div>
@@ -1672,8 +1711,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 软件安装</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 软件安装</h4>
+          <div class="article-list" id="article-list-16">
             
         <a href="https://mp.weixin.qq.com/s/iKxNpHuk7Pi0Pq97KGsdig" target="_blank" class="article-item">
           <div class="article-title">IDM的使用方法</div>
@@ -1710,8 +1749,8 @@
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 平台使用</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 平台使用</h4>
+          <div class="article-list" id="article-list-17">
             
         <a href="https://mp.weixin.qq.com/s/Lf7ScgHI8F2cgpQehpZkRA" target="_blank" class="article-item">
           <div class="article-title">【蛇年快乐~】公众号内文章查找方法</div>
@@ -1748,8 +1787,8 @@
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title">📁 休闲内容</h4>
-          <div class="article-list">
+          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 休闲内容</h4>
+          <div class="article-list" id="article-list-18">
             
         <a href="https://mp.weixin.qq.com/s/G8g7FsVN-BUJGfnmNrQSuA" target="_blank" class="article-item">
           <div class="article-title">看剧摸鱼-《重启人生》番外篇 I 在线观看</div>
@@ -1879,6 +1918,21 @@
             currentProgress = Math.max(0, Math.min(100, percent));
             document.getElementById('progressBar').style.width = currentProgress + '%';
         }
-    </script>
+    
+        function toggleSubcategory(header) {
+            const subcategory = header.closest('.subcategory');
+            const articleList = subcategory.querySelector('.article-list');
+            const toggleIcon = header.querySelector('.toggle-icon');
+            
+            if (articleList.classList.contains('expanded')) {
+                articleList.classList.remove('expanded');
+                toggleIcon.classList.remove('expanded');
+            } else {
+                articleList.classList.add('expanded');
+                toggleIcon.classList.add('expanded');
+            }
+        }
+
+</script>
 </body>
 </html>
