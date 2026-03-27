@@ -476,45 +476,6 @@
             padding: 26px;
             box-shadow: var(--card-shadow);
         }
-
-        .subcategory {
-            margin-bottom: 16px;
-        }
-
-        .subcategory-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            user-select: none;
-            padding: 10px 0;
-            transition: all 0.3s ease;
-        }
-
-        .subcategory-title:hover {
-            color: var(--accent-terracotta);
-        }
-
-        .toggle-icon {
-            font-size: 12px;
-            transition: transform 0.3s ease;
-        }
-
-        .toggle-icon.expanded {
-            transform: rotate(90deg);
-        }
-
-        .article-list {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
-            opacity: 0;
-        }
-
-        .article-list.expanded {
-            max-height: 2000px;
-            opacity: 1;
-        }
         
         .subcategory {
             margin-bottom: 26px;
@@ -741,7 +702,7 @@
                 
                 <div class="sidebar-stats">
                     <div class="stat-item">
-                        <div class="stat-number">121</div>
+                        <div class="stat-number">130</div>
                         <div class="stat-label">篇文章</div>
                     </div>
                     <div class="stat-item">
@@ -791,28 +752,28 @@
       <div class="card-icon">📚</div>
       <div class="card-title">全部文章</div>
       <div class="card-desc">浏览所有公众号文章</div>
-      <div class="card-count">121+篇</div>
+      <div class="card-count">130+篇</div>
     </div>
   
     <div class="content-card" data-category="cad">
       <div class="card-icon">📐</div>
       <div class="card-title">CAD技术教程</div>
       <div class="card-desc">核心内容领域</div>
-      <div class="card-count">75篇</div>
+      <div class="card-count">43篇</div>
     </div>
   
     <div class="content-card" data-category="su">
       <div class="card-icon">🏗️</div>
       <div class="card-title">SU软件</div>
       <div class="card-desc">3D建模工具</div>
-      <div class="card-count">7篇</div>
+      <div class="card-count">15篇</div>
     </div>
   
     <div class="content-card" data-category="adobe">
       <div class="card-icon">🎨</div>
       <div class="card-title">Adobe软件</div>
       <div class="card-desc">PS、ID等教程</div>
-      <div class="card-count">9篇</div>
+      <div class="card-count">18篇</div>
     </div>
   
     <div class="content-card" data-category="ppt">
@@ -833,7 +794,7 @@
       <div class="card-icon">💻</div>
       <div class="card-title">电脑系统和软件</div>
       <div class="card-desc">系统问题和软件安装</div>
-      <div class="card-count">7篇</div>
+      <div class="card-count">5篇</div>
     </div>
   
     <div class="content-card" data-category="gzh">
@@ -870,13 +831,13 @@
           <div class="detail-info">
             <h2 class="detail-title">全部文章</h2>
             <p class="detail-desc">浏览所有公众号文章</p>
-            <span class="detail-badge">121+篇文章</span>
+            <span class="detail-badge">130+篇文章</span>
           </div>
         </div>
         <div class="subcategories-container">
           
           <div class="subcategory">
-            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 最新文章</h4>
+            <h4 class="subcategory-title">📁 最新文章</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -884,7 +845,7 @@
           </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 热门推荐</h4>
+            <h4 class="subcategory-title">📁 热门推荐</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -892,7 +853,7 @@
           </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 精选合集</h4>
+            <h4 class="subcategory-title">📁 精选合集</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -909,193 +870,15 @@
           <div class="detail-info">
             <h2 class="detail-title">CAD技术教程</h2>
             <p class="detail-desc">核心内容领域</p>
-            <span class="detail-badge">75+篇文章</span>
+            <span class="detail-badge">43篇文章</span>
           </div>
         </div>
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 基础操作</h4>
-          <div class="article-list" id="article-list-1">
-        <a href="https://mp.weixin.qq.com/s/92pvnK5JvpwDL54iZrB5pQ" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：CAD保存出现"警告 ：CAD 多重从属对象句柄"C" ..."</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/-mY7R1mkTCocYAyYuwdn7Q" target="_blank" class="article-item">
-          <div class="article-title">CAD：布尔运算</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/WfU5nxNdb24ol3idlMlPfA" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：从CAD的一张图复制到另一张图后文字或标注样式产生变化</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/CC3iXMGLiimpA0LfRVU_KQ" target="_blank" class="article-item">
-          <div class="article-title">CAD：延伸ex、修剪tr与自动修剪extrim</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/n_yap0TCQb_cmQIA84FC_w" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：如何设置cad导出pdf不带批注</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/yKJSLW2FopwjJbcuyk9PDg" target="_blank" class="article-item">
-          <div class="article-title">CAD：删除重线overkill</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/zzsZl1Pvw5uDYXoWgEgpDg" target="_blank" class="article-item">
-          <div class="article-title">CAD：天正车位布置与编号</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/u3g05TxWxzJ-CVS5Nh-Ibw" target="_blank" class="article-item">
-          <div class="article-title">CAD：夹点的使用小技巧</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/xptUYnYFwsWT1e_V13HXWg" target="_blank" class="article-item">
-          <div class="article-title">CAD：动态块-拉伸</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/d06fe6e4f-n_akf606aOQQ" target="_blank" class="article-item">
-          <div class="article-title">CAD：重复上一个命令ADD(ADDSELECTED)</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/MZPJk_6gu_CBSJ5oTpwxsQ" target="_blank" class="article-item">
-          <div class="article-title">CAD：动态块-阵列</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/DTngXEuv1PUxbR4rBKH_bg" target="_blank" class="article-item">
-          <div class="article-title">CAD、天正快捷键</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/cQhxb2MmLzMv6ih9LXpd6g" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：窗口上方功能区不显示</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/_SSnwRclyOM8qeNVmhYHFg" target="_blank" class="article-item">
-          <div class="article-title">CAD：外部参照使用小技巧</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-
-        <a href="https://mp.weixin.qq.com/s/JpEyKvFOWivMEXqw43dIRA" target="_blank" class="article-item">
-          <div class="article-title">CAD：图纸转正小技巧</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/3oGJeMwuHzJYE8b0qQD1KA" target="_blank" class="article-item">
-          <div class="article-title">CAD：隔离对象与隐藏对象</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/rlSbGTseuW3JvQju5bsDwQ" target="_blank" class="article-item">
-          <div class="article-title">CAD：阵列复制与等分复制</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/ZZcruEQib56oVrBbtG2dEw" target="_blank" class="article-item">
-          <div class="article-title">CAD：PDF转CAD格式</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/_X5xvgiMakh3VIHABWRmgQ" target="_blank" class="article-item">
-          <div class="article-title">CAD：选择类似对象（SIM）</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/_dkInxRt4EgabHZ6Uf5iBg" target="_blank" class="article-item">
-          <div class="article-title">CAD：快速选择（QSE）</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/aojKk0A-doldBZG75qJf7g" target="_blank" class="article-item">
-          <div class="article-title">CAD：设置绘图环境</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/qhAXq3mxOzhaG1OXHgpLzg" target="_blank" class="article-item">
-          <div class="article-title">CAD：快速计算器QC、Ctrl+8</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/pP_cSxzt6tNgpiV7trtAxw" target="_blank" class="article-item">
-          <div class="article-title">CAD：填充H</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/lKMeZgQOCbxY_dYRx8mBRQ" target="_blank" class="article-item">
-          <div class="article-title">CAD：填充批量重新创建边界</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
+          <h4 class="subcategory-title">📁 基础操作</h4>
+          <div class="article-list">
+            
         <a href="https://mp.weixin.qq.com/s/vXf4VZxTSMMRWUIGhssYFg" target="_blank" class="article-item">
           <div class="article-title">CAD：仅撤销图层状态命令（LAYERP）</div>
           <div class="article-meta">
@@ -1244,25 +1027,9 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 图层管理</h4>
-          <div class="article-list" id="article-list-2">
+          <h4 class="subcategory-title">📁 图层管理</h4>
+          <div class="article-list">
             
-        <a href="https://mp.weixin.qq.com/s/hMPA0Y2H7DkXzZA3sdBI-w" target="_blank" class="article-item">
-          <div class="article-title">CAD：图层的合并、转换、删除</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/Wcdl_m-FEuR_MdPH1GVR7w" target="_blank" class="article-item">
-          <div class="article-title">CAD：图层的开关、隔离、冻结、锁定</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
         <a href="https://mp.weixin.qq.com/s/ZnkODpO0hfpe0Eq_9cB6wQ" target="_blank" class="article-item">
           <div class="article-title">CAD：布局和模型之间的对象相互转换"chspace"</div>
           <div class="article-meta">
@@ -1291,17 +1058,9 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 块与动态块</h4>
-          <div class="article-list" id="article-list-3">
+          <h4 class="subcategory-title">📁 块与动态块</h4>
+          <div class="article-list">
             
-        <a href="https://mp.weixin.qq.com/s/E_Zeb8IY51KVKBqZrjym1Q" target="_blank" class="article-item">
-          <div class="article-title">CAD：图块批量改名rename</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
         <a href="https://mp.weixin.qq.com/s/KRqvfNJ1xYAVDKji0OneCQ" target="_blank" class="article-item">
           <div class="article-title">CAD：文字内容格式刷插件</div>
           <div class="article-meta">
@@ -1322,23 +1081,16 @@
         </div>
       
           <div class="subcategory">
-            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 打印输出</h4>
-            <div class="article-list" id="article-list-4">
-            
-        <a href="https://mp.weixin.qq.com/s/F3dFQJaOYeTgExXVf6BTIw" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：关闭CAD打印PDF文件，文件自动打开的情况</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
+            <h4 class="subcategory-title">📁 打印输出</h4>
+            <div class="article-empty">
+              <span class="empty-icon">📝</span>
+              <span class="empty-text">暂无文章（待添加）</span>
+            </div>
           </div>
-        </a>
-      
-          </div>
-        </div>
         
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 天正系列</h4>
-          <div class="article-list" id="article-list-5">
+          <h4 class="subcategory-title">📁 天正系列</h4>
+          <div class="article-list">
             
         <a href="https://mp.weixin.qq.com/s/NYQyPAExjXGzzoL7KEOZag" target="_blank" class="article-item">
           <div class="article-title">天正：长度统计（cdtj）</div>
@@ -1347,7 +1099,15 @@
             <span class="article-tag">CAD技术教程</span>
           </div>
         </a>
-
+      
+        <a href="https://mp.weixin.qq.com/s/Bj4j3qPZmoTlyxghY9XDYw" target="_blank" class="article-item">
+          <div class="article-title">CAD：天正的查找替换（czth）</div>
+          <div class="article-meta">
+            <span class="article-date">2023-10-13</span>
+            <span class="article-tag">CAD技术教程</span>
+          </div>
+        </a>
+      
         <a href="https://mp.weixin.qq.com/s/AI_EePAWpq9ifRsKo9aWOg" target="_blank" class="article-item">
           <div class="article-title">天正：绘制递增文字小技巧</div>
           <div class="article-meta">
@@ -1360,8 +1120,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 快捷键分享</h4>
-          <div class="article-list" id="article-list-6">
+          <h4 class="subcategory-title">📁 快捷键分享</h4>
+          <div class="article-list">
             
         <a href="https://mp.weixin.qq.com/s/Rg5gBCaYOZNiEw3N0K1zQg" target="_blank" class="article-item">
           <div class="article-title">CAD、天正快捷键</div>
@@ -1375,57 +1135,9 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 问题排查</h4>
-          <div class="article-list" id="article-list-7">
+          <h4 class="subcategory-title">📁 问题排查</h4>
+          <div class="article-list">
             
-        <a href="https://mp.weixin.qq.com/s/TxKZDDYWIKkb56ah-d529g" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：cad粘贴进另一个文件时显示无效2.0</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/3IzD3oQggjoYhWJ18rwtJA" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：鼠标突然不能框选</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/7xol2Hjpy-ZVr1_aXzjd9Q" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：如何计算多个多段线的总长度</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/Ths-lu0M2W00xv_6xyz61g" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：CAD经典模式</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/AceubUEgA6enfVmk3LbgSA" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：cad不能拖拽打开</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/Rj4534kC9bYBwRkG0lLKOQ" target="_blank" class="article-item">
-          <div class="article-title">CAD问题：cad粘贴进另一个文件时显示无效</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">CAD技术教程</span>
-          </div>
-        </a>
-      
         <a href="https://mp.weixin.qq.com/s/E9KbYHde8FO061U-uw74OA" target="_blank" class="article-item">
           <div class="article-title">CAD问题：解决每次重启都要重新加载.lsp插件的问题</div>
           <div class="article-meta">
@@ -1546,112 +1258,54 @@
           </div>
         </a>
       
+        <a href="https://mp.weixin.qq.com/s/5SXDfzsyav7eR_Zc-xSeVg" target="_blank" class="article-item">
+          <div class="article-title">CAD问题：如何解决超大图纸、无法复制等异常问题</div>
+          <div class="article-meta">
+            <span class="article-date">未知日期</span>
+            <span class="article-tag">CAD技术教程</span>
+          </div>
+        </a>
+      
           </div>
         </div>
       
         </div>
       </div>
-
-  <div class="single-category-view" id="view-tz" style="display: none;">
-    <button class="back-btn" onclick="showAllCategories()">← 返回全部分类</button>
-    <div class="category-detail-header">
-      <div class="detail-icon">🏗️</div>
-      <div class="detail-info">
-        <h2 class="detail-title">天正软件</h2>
-        <p class="detail-desc">天正建筑工具</p>
-        <span class="detail-badge">1+篇文章</span>
-      </div>
-    </div>
-    <div class="subcategories-container">
-      <div class="subcategory">
-        <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 基础操作</h4>
-        <div class="article-list">
-          
-        <a href="https://mp.weixin.qq.com/s/Bj4j3qPZmoTlyxghY9XDYw" target="_blank" class="article-item">
-          <div class="article-title">CAD：天正的查找替换（czth）</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-18</span>
-            <span class="article-tag">天正软件</span>
-          </div>
-        </a>
-        </div>
-      </div>
-    </div>
-  </div><div class="single-category-view" id="view-su" style="display: none;">
+    
+      <div class="single-category-view" id="view-su" style="display: none;">
         <button class="back-btn" onclick="showAllCategories()">← 返回全部分类</button>
         <div class="category-detail-header">
           <div class="detail-icon">🏗️</div>
           <div class="detail-info">
             <h2 class="detail-title">SU软件</h2>
             <p class="detail-desc">3D建模工具</p>
-            <span class="detail-badge">7+篇文章</span>
+            <span class="detail-badge">15篇文章</span>
           </div>
         </div>
         <div class="subcategories-container">
           
           <div class="subcategory">
-            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 基础入门</h4>
-            <div class="article-list" id="article-list-su-basic">
-        <a href="https://mp.weixin.qq.com/s/mZQ71P2LqhEL_t_kyo-lDw" target="_blank" class="article-item">
-          <div class="article-title">SU基础介绍</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">SU软件</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/7-85HPkGY7AqAohQEbgJHg" target="_blank" class="article-item">
-          <div class="article-title">SU基础插件</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">SU软件</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/DXa-UtMGD0M0a_IT9-z9Jw" target="_blank" class="article-item">
-          <div class="article-title">SU插件：Fredo联合推拉-JointPushPull</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">SU软件</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/QJE6KFe_84wqKSG7WnERMg" target="_blank" class="article-item">
-          <div class="article-title">SU插件：Fredo曲面绘制-ToolsOnSurfa</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">SU软件</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/iL72ryXIej2dHG0hge71yQ" target="_blank" class="article-item">
-          <div class="article-title">SU插件：用于创建曲面插件</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">SU软件</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/u05QHs45n3ATR-CnUV96Zg" target="_blank" class="article-item">
-          <div class="article-title">SU快捷键</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">SU软件</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/LjwkDyko82adciFebC-XPQ" target="_blank" class="article-item">
-          <div class="article-title">SU插件：布尔运算插件</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">SU软件</span>
-          </div>
-        </a>
+            <h4 class="subcategory-title">📁 基础入门</h4>
+            <div class="article-empty">
+              <span class="empty-icon">📝</span>
+              <span class="empty-text">暂无文章（待添加）</span>
             </div>
           </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 插件教程</h4>
-            
+            <h4 class="subcategory-title">📁 插件教程</h4>
+            <div class="article-empty">
+              <span class="empty-icon">📝</span>
+              <span class="empty-text">暂无文章（待添加）</span>
+            </div>
           </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 快捷键</h4>
-            
+            <h4 class="subcategory-title">📁 快捷键</h4>
+            <div class="article-empty">
+              <span class="empty-icon">📝</span>
+              <span class="empty-text">暂无文章（待添加）</span>
+            </div>
           </div>
         
         </div>
@@ -1664,97 +1318,29 @@
           <div class="detail-info">
             <h2 class="detail-title">Adobe软件</h2>
             <p class="detail-desc">PS、ID等教程</p>
-            <span class="detail-badge">9+篇文章</span>
+            <span class="detail-badge">18篇文章</span>
           </div>
         </div>
         <div class="subcategories-container">
           
           <div class="subcategory">
-            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 Photoshop 技巧</h4>
-            <div class="article-list" id="article-list-8">
-
-        <a href="https://mp.weixin.qq.com/s/UA_p3AKWu0ocjubHTacZaQ" target="_blank" class="article-item">
-          <div class="article-title">ID制作流程</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">Adobe软件</span>
+            <h4 class="subcategory-title">📁 Photoshop 技巧</h4>
+            <div class="article-empty">
+              <span class="empty-icon">📝</span>
+              <span class="empty-text">暂无文章（待添加）</span>
+            </div>
           </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/NZrSlHtF5-IJXgygWy25mQ" target="_blank" class="article-item">
-          <div class="article-title">ID快捷键</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">Adobe软件</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/joZehfC_3CAQR3zo8PhwSQ" target="_blank" class="article-item">
-          <div class="article-title">ID添加文字</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">Adobe软件</span>
-          </div>
-        </a>
-            
-        <a href="https://mp.weixin.qq.com/s/yMdgxZRwllYofpo8jepIGA" target="_blank" class="article-item">
-          <div class="article-title">PS快捷键</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">Adobe软件</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/yL09lgU0CHUbGSrdA3QxYQ" target="_blank" class="article-item">
-          <div class="article-title">PS：内容识别填充-快速填充图像</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">Adobe软件</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/aNO4iAXm3rLLFZyGyk3OEw" target="_blank" class="article-item">
-          <div class="article-title">PS：批量导出图片小技巧</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">Adobe软件</span>
-          </div>
-        </a>
-      
-          </div>
-        </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 InDesign 排版</h4>
-            <div class="article-list" id="article-list-9">
-            
-        <a href="https://mp.weixin.qq.com/s/RYpkIenz6rZsUvR0LH3eag" target="_blank" class="article-item">
-          <div class="article-title">ID添加多页pdf</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">Adobe软件</span>
+            <h4 class="subcategory-title">📁 InDesign 排版</h4>
+            <div class="article-empty">
+              <span class="empty-icon">📝</span>
+              <span class="empty-text">暂无文章（待添加）</span>
+            </div>
           </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/rqJM18mpVl_xGwb93_PlaQ" target="_blank" class="article-item">
-          <div class="article-title">ID基础介绍</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">Adobe软件</span>
-          </div>
-        </a>
-      
-        <a href="https://mp.weixin.qq.com/s/F__SFL3u2zcA7FqnLcJuEw" target="_blank" class="article-item">
-          <div class="article-title">用ID给pdf文件加水印</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-17</span>
-            <span class="article-tag">Adobe软件</span>
-          </div>
-        </a>
-      
-          </div>
-        </div>
         
           <div class="subcategory">
-            <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 快捷键汇总</h4>
+            <h4 class="subcategory-title">📁 快捷键汇总</h4>
             <div class="article-empty">
               <span class="empty-icon">📝</span>
               <span class="empty-text">暂无文章（待添加）</span>
@@ -1771,14 +1357,14 @@
           <div class="detail-info">
             <h2 class="detail-title">PPT技巧</h2>
             <p class="detail-desc">演示文稿制作</p>
-            <span class="detail-badge">6+篇文章</span>
+            <span class="detail-badge">6篇文章</span>
           </div>
         </div>
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 对象操作</h4>
-          <div class="article-list" id="article-list-10">
+          <h4 class="subcategory-title">📁 对象操作</h4>
+          <div class="article-list">
             
         <a href="https://mp.weixin.qq.com/s/i-Bx9oHxFWsd2TF4DkkLUA" target="_blank" class="article-item">
           <div class="article-title">PPT：免费PDF转PPT的方法</div>
@@ -1816,8 +1402,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 插件使用</h4>
-          <div class="article-list" id="article-list-11">
+          <h4 class="subcategory-title">📁 插件使用</h4>
+          <div class="article-list">
             
         <a href="https://mp.weixin.qq.com/s/1kFqFCGWF0brB8_gjRFkCQ" target="_blank" class="article-item">
           <div class="article-title">PPT：超好用插件iSlide</div>
@@ -1831,8 +1417,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 底图处理</h4>
-          <div class="article-list" id="article-list-12">
+          <h4 class="subcategory-title">📁 底图处理</h4>
+          <div class="article-list">
             
         <a href="https://mp.weixin.qq.com/s/9RFezb_ZgrwA7gp45Z-ZGw" target="_blank" class="article-item">
           <div class="article-title">PPT：原位置替换底图</div>
@@ -1855,14 +1441,14 @@
           <div class="detail-info">
             <h2 class="detail-title">AI和效率工具</h2>
             <p class="detail-desc">人工智能工具和效率工具</p>
-            <span class="detail-badge">11+篇文章</span>
+            <span class="detail-badge">11篇文章</span>
           </div>
         </div>
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 AI推荐</h4>
-          <div class="article-list" id="article-list-13">
+          <h4 class="subcategory-title">📁 AI推荐</h4>
+          <div class="article-list">
             
         <a href="https://mp.weixin.qq.com/s/iAepSnP0SzLbLbAXM-NcyQ" target="_blank" class="article-item">
           <div class="article-title">AI推荐：告别本地部署风险！用扣子Coze云端养"小龙虾"</div>
@@ -1916,8 +1502,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 效率工具</h4>
-          <div class="article-list" id="article-list-14">
+          <h4 class="subcategory-title">📁 效率工具</h4>
+          <div class="article-list">
             
         <a href="https://mp.weixin.qq.com/s/ORych-k7l_kby2WxTsSrMQ" target="_blank" class="article-item">
           <div class="article-title">免费caj转pdf方法！</div>
@@ -1972,28 +1558,14 @@
           <div class="detail-info">
             <h2 class="detail-title">电脑系统和软件</h2>
             <p class="detail-desc">系统问题和软件安装</p>
-            <span class="detail-badge">7+篇文章</span>
+            <span class="detail-badge">5篇文章</span>
           </div>
         </div>
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 系统问题</h4>
-          <div class="article-list" id="article-list-15">
-        <a href="https://mp.weixin.qq.com/s/ncQpbnzjya8OBoIt0u0R8g" target="_blank" class="article-item">
-          <div class="article-title">电脑问题：网络发现总是关闭</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">电脑系统和软件</span>
-          </div>
-        </a>
-        <a href="https://mp.weixin.qq.com/s/bx2NMWPMQgepwOk2jZ3Wbg" target="_blank" class="article-item">
-          <div class="article-title">Win+系列快捷键</div>
-          <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
-            <span class="article-tag">电脑系统和软件</span>
-          </div>
-        </a>
+          <h4 class="subcategory-title">📁 系统问题</h4>
+          <div class="article-list">
             
         <a href="https://mp.weixin.qq.com/s/OSKwYhiPaeB2CRb2a06AtA" target="_blank" class="article-item">
           <div class="article-title">电脑问题：文件需要system的权限才能删除</div>
@@ -2023,8 +1595,8 @@
         </div>
       
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 软件安装</h4>
-          <div class="article-list" id="article-list-16">
+          <h4 class="subcategory-title">📁 软件安装</h4>
+          <div class="article-list">
             
         <a href="https://mp.weixin.qq.com/s/iKxNpHuk7Pi0Pq97KGsdig" target="_blank" class="article-item">
           <div class="article-title">IDM的使用方法</div>
@@ -2055,14 +1627,14 @@
           <div class="detail-info">
             <h2 class="detail-title">公众号运营</h2>
             <p class="detail-desc">公众号使用技巧</p>
-            <span class="detail-badge">2+篇文章</span>
+            <span class="detail-badge">2篇文章</span>
           </div>
         </div>
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 平台使用</h4>
-          <div class="article-list" id="article-list-17">
+          <h4 class="subcategory-title">📁 平台使用</h4>
+          <div class="article-list">
             
         <a href="https://mp.weixin.qq.com/s/Lf7ScgHI8F2cgpQehpZkRA" target="_blank" class="article-item">
           <div class="article-title">【蛇年快乐~】公众号内文章查找方法</div>
@@ -2093,23 +1665,22 @@
           <div class="detail-info">
             <h2 class="detail-title">个人/娱乐类</h2>
             <p class="detail-desc">休闲娱乐内容</p>
-            <span class="detail-badge">3+篇文章</span>
+            <span class="detail-badge">3篇文章</span>
           </div>
         </div>
         <div class="subcategories-container">
           
         <div class="subcategory">
-          <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 休闲内容</h4>
-          <div class="article-list" id="article-list-18">
-        <a href="https://mp.weixin.qq.com/s/RL9d3wMxFnnJJ5lgZTzNyA" target="_blank" class="article-item">
-          <div class="article-title">看剧摸鱼-茶杯狐新地址</div>
+          <h4 class="subcategory-title">📁 休闲内容</h4>
+          <div class="article-list">
+            
+        <a href="https://mp.weixin.qq.com/s/G8g7FsVN-BUJGfnmNrQSuA" target="_blank" class="article-item">
+          <div class="article-title">看剧摸鱼-《重启人生》番外篇 I 在线观看</div>
           <div class="article-meta">
-            <span class="article-date">2026-03-19</span>
+            <span class="article-date">2023-10-29</span>
             <span class="article-tag">个人/娱乐类</span>
           </div>
         </a>
-            
-
       
         <a href="https://mp.weixin.qq.com/s/cv4gYxycpsHG4B5-rS2rmw" target="_blank" class="article-item">
           <div class="article-title">看剧摸鱼-《重启人生》番外篇 I 在线观看</div>
@@ -2231,21 +1802,6 @@
             currentProgress = Math.max(0, Math.min(100, percent));
             document.getElementById('progressBar').style.width = currentProgress + '%';
         }
-    
-        function toggleSubcategory(header) {
-            const subcategory = header.closest('.subcategory');
-            const articleList = subcategory.querySelector('.article-list');
-            const toggleIcon = header.querySelector('.toggle-icon');
-            
-            if (articleList.classList.contains('expanded')) {
-                articleList.classList.remove('expanded');
-                toggleIcon.classList.remove('expanded');
-            } else {
-                articleList.classList.add('expanded');
-                toggleIcon.classList.add('expanded');
-            }
-        }
-
-</script>
+    </script>
 </body>
 </html>
