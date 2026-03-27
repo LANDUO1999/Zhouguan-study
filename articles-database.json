@@ -1,0 +1,741 @@
+{
+  "totalArticles": 121,
+  "categoryStats": {
+    "cad": 78,
+    "adobe": 12,
+    "ai": 8,
+    "su": 7,
+    "ppt": 6,
+    "system": 5,
+    "gzh": 2,
+    "life": 3
+  },
+  "articles": [
+    {
+      "url": "https://mp.weixin.qq.com/s/92pvnK5JvpwDL54iZrB5pQ",
+      "title": "CAD问题：CAD保存出现\"警告 ：CAD 多重从属对象句柄\"C\" ...\"",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/-mY7R1mkTCocYAyYuwdn7Q",
+      "title": "CAD：布尔运算",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/WfU5nxNdb24ol3idlMlPfA",
+      "title": "CAD问题：从CAD的一张图复制到另一张图后文字或标注样式产生变化",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/CC3iXMGLiimpA0LfRVU_KQ",
+      "title": "CAD：延伸ex、修剪tr与自动修剪extrim",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/n_yap0TCQb_cmQIA84FC_w",
+      "title": "CAD问题：如何设置cad导出pdf不带批注",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/yKJSLW2FopwjJbcuyk9PDg",
+      "title": "CAD：删除重线overkill",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/zzsZl1Pvw5uDYXoWgEgpDg",
+      "title": "CAD：天正车位布置与编号",
+      "category": "cad",
+      "subcategory": "天正系列"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/u3g05TxWxzJ-CVS5Nh-Ibw",
+      "title": "CAD：夹点的使用小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/xptUYnYFwsWT1e_V13HXWg",
+      "title": "CAD：动态块-拉伸",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/d06fe6e4f-n_akf606aOQQ",
+      "title": "CAD：重复上一个命令ADD(ADDSELECTED)",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/MZPJk_6gu_CBSJ5oTpwxsQ",
+      "title": "CAD：动态块-阵列",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/DTngXEuv1PUxbR4rBKH_bg",
+      "title": "CAD、天正快捷键",
+      "category": "cad",
+      "subcategory": "快捷键分享"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/cQhxb2MmLzMv6ih9LXpd6g",
+      "title": "CAD问题：窗口上方功能区不显示",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/_SSnwRclyOM8qeNVmhYHFg",
+      "title": "CAD：外部参照使用小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/JpEyKvFOWivMEXqw43dIRA",
+      "title": "CAD：图纸转正小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/3oGJeMwuHzJYE8b0qQD1KA",
+      "title": "CAD：隔离对象与隐藏对象",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/rlSbGTseuW3JvQju5bsDwQ",
+      "title": "CAD：阵列复制与等分复制",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/ZZcruEQib56oVrBbtG2dEw",
+      "title": "CAD：PDF转CAD格式",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/_X5xvgiMakh3VIHABWRmgQ",
+      "title": "CAD：选择类似对象（SIM）",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/_dkInxRt4EgabHZ6Uf5iBg",
+      "title": "CAD：快速选择（QSE）",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/aojKk0A-doldBZG75qJf7g",
+      "title": "CAD：设置绘图环境",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/qhAXq3mxOzhaG1OXHgpLzg",
+      "title": "CAD：快速计算器QC、Ctrl+8",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/pP_cSxzt6tNgpiV7trtAxw",
+      "title": "CAD：填充H",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/lKMeZgQOCbxY_dYRx8mBRQ",
+      "title": "CAD：填充批量重新创建边界",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/vXf4VZxTSMMRWUIGhssYFg",
+      "title": "CAD：仅撤销图层状态命令（LAYERP）",
+      "category": "cad",
+      "subcategory": "图层管理"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/jILC9g2wUIB3ash0lJ7SDA",
+      "title": "CAD：仅撤销删除操作命令（OOPS）",
+      "category": "adobe",
+      "subcategory": "Photoshop 技巧"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/abpLuhCACoF4a6PkZeDnHQ",
+      "title": "CAD：在位编辑（REFEDIT）",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/KzddPU9akDERm-7Qe4PSTg",
+      "title": "CAD版本转换器Pro",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/_SSnwRclyOMqeNVmhYHFg",
+      "title": "CAD：外部参照使用小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/ImpOJrGVpaNCANN8glO9Wg",
+      "title": "CAD版本转换器",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/L6eCzWtQNbrJSMjgdKf1Qw",
+      "title": "CAD：反转命令（REVERSE）",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/oUksTe2X9GxZkvDq6iYtXQ",
+      "title": "CAD：单行文字与多行文字相互转换小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/2G3yoctI6jd4cwv2X3UliQ",
+      "title": "CAD：夹点的使用小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/YRSdTa4V6w06MRfsEW_Guw",
+      "title": "CAD：删除重复对象overkill",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/SOEFZIrhxJPLXGoI93TG-g",
+      "title": "CAD：所有文字置于最顶层；所有填充置于最底层小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/1mJvdHtnm3ELE-M6_68MeA",
+      "title": "CAD：绘图次序（DR)",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/augYTc_9bcYLwo18t_cGNQ",
+      "title": "CAD：合并命令（J）",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/CSipQvZraJLz62V5bpuaiw",
+      "title": "CAD：直线与多段线相互转换小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/km0B8oBNu1nCdkHyU7tPXw",
+      "title": "CAD：Z轴归零小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/1ZHzAu3yU-LtPpvozraTYw",
+      "title": "CAD：查找替换（Find）",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/rRd6kXhsX1ZNLHcs8X80NA",
+      "title": "CAD：更改背景颜色小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/iYCAtw1b3-DQDFCwRRxArQ",
+      "title": "CAD：对象捕捉小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/hMPA0Y2H7DkXzZA3sdBI-w",
+      "title": "CAD：图层的合并、转换、删除",
+      "category": "cad",
+      "subcategory": "图层管理"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/Wcdl_m-FEuR_MdPH1GVR7w",
+      "title": "CAD：图层的开关、隔离、冻结、锁定",
+      "category": "cad",
+      "subcategory": "图层管理"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/ZnkODpO0hfpe0Eq_9cB6wQ",
+      "title": "CAD：布局和模型之间的对象相互转换\"chspace\"",
+      "category": "cad",
+      "subcategory": "图层管理"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/2zalSNsalk4GulbPtyjHDw",
+      "title": "CAD：布局图层应用",
+      "category": "cad",
+      "subcategory": "图层管理"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/jsTR_SYrGKTNQ5sX8zBaMg",
+      "title": "CAD：布局介绍",
+      "category": "cad",
+      "subcategory": "图层管理"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/E_Zeb8IY51KVKBqZrjym1Q",
+      "title": "CAD：图块批量改名rename",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/KRqvfNJ1xYAVDKji0OneCQ",
+      "title": "CAD：文字内容格式刷插件",
+      "category": "cad",
+      "subcategory": "块与动态块"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/dVhGBEDPp4TohMdIATD5gA",
+      "title": "CAD：动态块-翻转",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/F3dFQJaOYeTgExXVf6BTIw",
+      "title": "CAD问题：关闭CAD打印PDF文件，文件自动打开的情况",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/NYQyPAExjXGzzoL7KEOZag",
+      "title": "天正：长度统计（cdtj）",
+      "category": "cad",
+      "subcategory": "天正系列"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/AI_EePAWpq9ifRsKo9aWOg",
+      "title": "天正：绘制递增文字小技巧",
+      "category": "cad",
+      "subcategory": "天正系列"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/Rg5gBCaYOZNiEw3N0K1zQg",
+      "title": "CAD、天正快捷键",
+      "category": "cad",
+      "subcategory": "快捷键分享"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/TxKZDDYWIKkb56ah-d529g",
+      "title": "CAD问题：cad粘贴进另一个文件时显示无效2.0",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/3IzD3oQggjoYhWJ18rwtJA",
+      "title": "CAD问题：鼠标突然不能框选",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/7xol2Hjpy-ZVr1_aXzjd9Q",
+      "title": "CAD问题：如何计算多个多段线的总长度",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/Ths-lu0M2W00xv_6xyz61g",
+      "title": "CAD问题：CAD经典模式",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/AceubUEgA6enfVmk3LbgSA",
+      "title": "CAD问题：cad不能拖拽打开",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/Rj4534kC9bYBwRkG0lLKOQ",
+      "title": "CAD问题：cad粘贴进另一个文件时显示无效",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/E9KbYHde8FO061U-uw74OA",
+      "title": "CAD问题：解决每次重启都要重新加载.lsp插件的问题",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/5SXDfzsyav7eR_Zc-xSeVg",
+      "title": "CAD问题：如何解决超大图纸、无法复制等异常问题",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/cZpJyk8ioBQQDJobO5U0HQ",
+      "title": "CAD问题：无法复制粘贴",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/eWBrE5_OZXV4mh4-jYLyuQ",
+      "title": "CAD问题：在位编辑外部参照的时候，图层名称前会插入奇怪符号",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/ig1KVH8woajhHUvw-U6X6Q",
+      "title": "CAD问题：无法先选择再执行命令",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/jGhYYX5O_neaqF8Fo9FVPA",
+      "title": "CAD问题：前期忘了安装Express Tools工具，如何再安装",
+      "category": "ai",
+      "subcategory": "效率工具"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/kJdXlDvqyAh376oJEME2eQ",
+      "title": "CAD问题：如何将圆弧恢复成圆",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/SpNOQD-Xy1VTPRAtozNhxg",
+      "title": "CAD问题：当关闭CAD图形后，再重新打开该图形时，会自动显示之前隐藏的所有对象",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/lwqQ1zNbdIdnwNT6FyLt4g",
+      "title": "CAD问题：打开CAD后替换字体的弹框不自动弹出",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/8AUqtn437hmY5pgmm4b33g",
+      "title": "CAD问题：安装CAD2014提示需要连接internet来安装windows组件",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/IUpKjXFx49n4mlZMpIBRWA",
+      "title": "CAD问题：文字镜像后字是反的",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/YkxKaKW4WKm3H89gHWbwGw",
+      "title": "CAD问题：CAD线型生成启用和禁用的切换",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/Oi4sylEg3Q8I8oPSycm2Lw",
+      "title": "CAD问题：CAD中关闭\"Shift+鼠标中键\"三维旋转快捷操作",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/dZyBmrrzUwHU9LLEAEyHtA",
+      "title": "CAD问题：CAD图形窗口外对象框选不中",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/z7z1BDpWo6rX0VQ6VUMLlw",
+      "title": "CAD问题：剪切块(XC)边界和遮盖(WI)边界如何隐藏和显示",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/Bj4j3qPZmoTlyxghY9XDYw",
+      "title": "CAD：天正的查找替换（czth）",
+      "category": "cad",
+      "subcategory": "天正系列"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/mZQ71P2LqhEL_t_kyo-lDw",
+      "title": "SU基础介绍",
+      "category": "su",
+      "subcategory": "插件教程"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/7-85HPkGY7AqAohQEbgJHg",
+      "title": "SU基础插件",
+      "category": "su",
+      "subcategory": "插件教程"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/DXa-UtMGD0M0a_IT9-z9Jw",
+      "title": "SU插件：Fredo联合推拉-JointPushPull",
+      "category": "su",
+      "subcategory": "插件教程"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/QJE6KFe_84wqKSG7WnERMg",
+      "title": "SU插件：Fredo曲面绘制-ToolsOnSurfa",
+      "category": "su",
+      "subcategory": "插件教程"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/iL72ryXIej2dHG0hge71yQ",
+      "title": "SU插件：用于创建曲面插件",
+      "category": "su",
+      "subcategory": "插件教程"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/u05QHs45n3ATR-CnUV96Zg",
+      "title": "SU快捷键",
+      "category": "su",
+      "subcategory": "插件教程"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/LjwkDyko82adciFebC-XPQ",
+      "title": "SU插件：布尔运算插件",
+      "category": "su",
+      "subcategory": "插件教程"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/UA_p3AKWu0ocjubHTacZaQ",
+      "title": "ID制作流程",
+      "category": "adobe",
+      "subcategory": "InDesign 排版"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/NZrSlHtF5-IJXgygWy25mQ",
+      "title": "ID快捷键",
+      "category": "adobe",
+      "subcategory": "InDesign 排版"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/joZehfC_3CAQR3zo8PhwSQ",
+      "title": "ID添加文字",
+      "category": "adobe",
+      "subcategory": "InDesign 排版"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/yMdgxZRwllYofpo8jepIGA",
+      "title": "PS快捷键",
+      "category": "adobe",
+      "subcategory": "Photoshop 技巧"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/yL09lgU0CHUbGSrdA3QxYQ",
+      "title": "PS：内容识别填充-快速填充图像",
+      "category": "adobe",
+      "subcategory": "Photoshop 技巧"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/aNO4iAXm3rLLFZyGyk3OEw",
+      "title": "PS：批量导出图片小技巧",
+      "category": "adobe",
+      "subcategory": "Photoshop 技巧"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/RYpkIenz6rZsUvR0LH3eag",
+      "title": "ID添加多页pdf",
+      "category": "adobe",
+      "subcategory": "InDesign 排版"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/rqJM18mpVl_xGwb93_PlaQ",
+      "title": "ID基础介绍",
+      "category": "adobe",
+      "subcategory": "InDesign 排版"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/F__SFL3u2zcA7FqnLcJuEw",
+      "title": "用ID给pdf文件加水印",
+      "category": "adobe",
+      "subcategory": "InDesign 排版"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/i-Bx9oHxFWsd2TF4DkkLUA",
+      "title": "PPT：免费PDF转PPT的方法",
+      "category": "ppt",
+      "subcategory": "对象操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/XLseygyuZNsi8klJbqU2Gw",
+      "title": "PPT：粘贴ppt时，如何保持原版式",
+      "category": "ppt",
+      "subcategory": "对象操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/uCsqeOIuYS6vM1iUyd4qtg",
+      "title": "PPT：快速更改对象样式",
+      "category": "ppt",
+      "subcategory": "对象操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/a4UL16V1ZYTrUJbYi3O5LA",
+      "title": "PPT：自定义快速访问工具栏",
+      "category": "ppt",
+      "subcategory": "对象操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/1kFqFCGWF0brB8_gjRFkCQ",
+      "title": "PPT：超好用插件iSlide",
+      "category": "ppt",
+      "subcategory": "对象操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/9RFezb_ZgrwA7gp45Z-ZGw",
+      "title": "PPT：原位置替换底图",
+      "category": "ppt",
+      "subcategory": "对象操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/iAepSnP0SzLbLbAXM-NcyQ",
+      "title": "AI推荐：告别本地部署风险！用扣子Coze云端养\"小龙虾\"",
+      "category": "ai",
+      "subcategory": "AI推荐"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/Ny_g3TMlbBxb4p6zS2Bmmw",
+      "title": "AI推荐：一键养\"龙虾\"，最傻瓜式的本地部署OpenClaw的方式",
+      "category": "ai",
+      "subcategory": "AI推荐"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/q1-J62TnlUF0t_f38j8dkw",
+      "title": "AI推荐：Nano-banan提示词",
+      "category": "ai",
+      "subcategory": "AI推荐"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/Uz9IjnefZKdkcvMlKlGLQw",
+      "title": "AI推荐：ChatGPT",
+      "category": "ai",
+      "subcategory": "AI推荐"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/9d-n2IY1t0grGITPBoywTQ",
+      "title": "AI推荐：如何用Kimi找剧看~",
+      "category": "ai",
+      "subcategory": "AI推荐"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/1KVGJmFLN5GlsWYkE-73hA",
+      "title": "AI推荐：kimi智能助手",
+      "category": "ai",
+      "subcategory": "AI推荐"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/ORych-k7l_kby2WxTsSrMQ",
+      "title": "免费caj转pdf方法！",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/7ygnfMJu5whHt1ZzRf8XhQ",
+      "title": "免费登录知网，下载知网论文文献的方法！",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/-Di3-goRBnPeDhoWYCyIfw",
+      "title": "滴答清单PC版（ticktick）解锁高级会员方式",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/W9IKXwTd5skQySiEZejhBQ",
+      "title": "油猴（Tampermonkey）安装与使用方法",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/T2yFyutlotu3qWXmjDGnow",
+      "title": "魔法工具分享",
+      "category": "ai",
+      "subcategory": "效率工具"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/ncQpbnzjya8OBoIt0u0R8g",
+      "title": "电脑问题：网络发现总是关闭",
+      "category": "system",
+      "subcategory": "系统问题"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/bx2NMWPMQgepwOk2jZ3Wbg",
+      "title": "Win+系列快捷键",
+      "category": "system",
+      "subcategory": "软件安装"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/OSKwYhiPaeB2CRb2a06AtA",
+      "title": "电脑问题：文件需要system的权限才能删除",
+      "category": "system",
+      "subcategory": "系统问题"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/GeN0mSzr8sEkjSkUWB7bAg",
+      "title": "电脑问题：应用程序无法正常启动(0xc000007b)问题",
+      "category": "system",
+      "subcategory": "系统问题"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/hweJqxSIBcoxZ-m3MjCQLQ",
+      "title": "CAD问题：同样的打印图纸尺寸为啥换了电脑打出来尺寸不一致",
+      "category": "system",
+      "subcategory": "系统问题"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/iKxNpHuk7Pi0Pq97KGsdig",
+      "title": "IDM的使用方法",
+      "category": "adobe",
+      "subcategory": "InDesign 排版"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/R21rb-F_5atzPCgPsS03yQ",
+      "title": "IDM安装与激活方法",
+      "category": "adobe",
+      "subcategory": "InDesign 排版"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/Lf7ScgHI8F2cgpQehpZkRA",
+      "title": "【蛇年快乐~】公众号内文章查找方法",
+      "category": "gzh",
+      "subcategory": "平台使用"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/wmsKOo3z61-d-8eDwhUdnw",
+      "title": "公众号内目录（阶段性更新）",
+      "category": "gzh",
+      "subcategory": "平台使用"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/RL9d3wMxFnnJJ5lgZTzNyA",
+      "title": "看剧摸鱼-茶杯狐新地址",
+      "category": "life",
+      "subcategory": "休闲内容"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/cv4gYxycpsHG4B5-rS2rmw",
+      "title": "看剧摸鱼-《重启人生》番外篇 I 在线观看",
+      "category": "life",
+      "subcategory": "休闲内容"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/5By7RZLRk6sqT78fn9psow",
+      "title": "看剧摸鱼",
+      "category": "life",
+      "subcategory": "休闲内容"
+    }
+  ]
+}
