@@ -1,14 +1,14 @@
 {
-  "totalArticles": 121,
+  "totalArticles": 140,
   "categoryStats": {
-    "cad": 78,
-    "adobe": 12,
+    "cad": 92,
+    "adobe": 14,
     "ai": 8,
     "su": 7,
-    "ppt": 6,
-    "system": 5,
+    "ppt": 7,
+    "system": 6,
     "gzh": 2,
-    "life": 3
+    "life": 4
   },
   "articles": [
     {
@@ -736,6 +736,120 @@
       "title": "看剧摸鱼",
       "category": "life",
       "subcategory": "休闲内容"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/xID1p3VUC04DxFTlm5UJIA",
+      "title": "电脑问题：只有一个 C 盘如何再分区",
+      "category": "system",
+      "subcategory": "系统问题"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/UpQxDKEPHu2e7URjHmTriA",
+      "title": "CAD：插入 Excel 表格 2.0",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/eGPGsFr11qM2AtDlrbRdzQ",
+      "title": "CAD：图层的开关、隔离、冻结、锁定",
+      "category": "cad",
+      "subcategory": "图层管理"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/LCxaNUZChv4nKD5DVlAaiQ",
+      "title": "CAD：动态块 - 可见性",
+      "category": "cad",
+      "subcategory": "块与动态块"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/gLBFevOdsFjpFuDA6I5v0w",
+      "title": "CAD：复制包含在块中的对象（NCOPY）",
+      "category": "cad",
+      "subcategory": "块与动态块"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/68xu1dPKReS01k3madt_eQ",
+      "title": "CAD：动态块 - 拉伸 2.0",
+      "category": "cad",
+      "subcategory": "块与动态块"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/mPzsmiV26S7uSlkqsp9A6w",
+      "title": "CAD：属性块（ATT）",
+      "category": "cad",
+      "subcategory": "块与动态块"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/WbKMPSi5MveozTt9T1JpAg",
+      "title": "CAD：天正的图块转化",
+      "category": "cad",
+      "subcategory": "天正系列"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/rlpgNEdPST0CguzvmQ10Vg",
+      "title": "CAD：插入图片",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/bP3pUjmq0EoKlNdATtTThA",
+      "title": "CAD：插入 Excel 表格",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/oBxxIylAe7vQBNdFxnf2EA",
+      "title": "CAD：阵列的使用 AR(ARRAY)",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/kpoUSObrVUJvjiVkky0avQ",
+      "title": "PS：快速更改画笔的大小、硬度和透明度的小技巧",
+      "category": "adobe",
+      "subcategory": "Photoshop 技巧"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/VyVmt-9ZmX0Xbc11b2-Ytw",
+      "title": "PPT：原位置替换底图",
+      "category": "ppt",
+      "subcategory": "底图处理"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/8U8OFUonjPgBgw9Hs-6VcQ",
+      "title": "ID 置入图片",
+      "category": "adobe",
+      "subcategory": "InDesign 排版"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/qVyzXscovl0qPZHVVFPDLQ",
+      "title": "CAD：去教育版水印",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/fsgNkx7dT0-ZBzKOuCYsWg",
+      "title": "CAD：选择小技巧",
+      "category": "cad",
+      "subcategory": "基础操作"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/z1-TXtcvcnZ6rpyD9Qa8jQ",
+      "title": "CAD 问题：特性面板不显示逐点标注的样式",
+      "category": "cad",
+      "subcategory": "问题排查"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/tfGQUJAQbYKdBUONLiXibQ",
+      "title": "自制电脑壁纸",
+      "category": "life",
+      "subcategory": "休闲内容"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/g9uj7JGejcVjmr2Xr2hJLA",
+      "title": "CAD：反转命令（REVERSE）",
+      "category": "cad",
+      "subcategory": "基础操作"
     }
   ]
 }
