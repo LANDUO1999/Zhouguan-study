@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章分类汇总表 - 州官点灯学习网站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .nav-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .summary {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .summary h2 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-card .label {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .category {
+            margin-bottom: 30px;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: all 0.3s;
+        }
+        
+        .category-header:hover {
+            opacity: 0.95;
+        }
+        
+        .category-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .category-count {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .toggle-icon {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .category.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+        
+        .category-content {
+            padding: 20px;
+            display: block;
+        }
+        
+        .category.collapsed .category-content {
+            display: none;
+        }
+        
+        .subcategory {
+            margin-bottom: 20px;
+        }
+        
+        .subcategory-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .article-list {
+            list-style: none;
+        }
+        
+        .article-item {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            transition: all 0.2s;
+        }
+        
+        .article-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .article-item a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 15px;
+            display: block;
+        }
+        
+        .article-item a:hover {
+            color: #667eea;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 14px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 州官点灯学习网站</h1>
+            <p>文章分类汇总表</p>
+            <a href="index.html" class="nav-link">← 返回网站首页</a>
+        </div>
+        
+        <div class="summary">
+            <h2>📊 总览</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">140</div>
+                    <div class="label">总文章数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">92</div>
+                    <div class="label">📐 CAD技术教程</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">14</div>
+                    <div class="label">🎨 Adobe软件</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">8</div>
+                    <div class="label">🤖 AI和效率工具</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">7</div>
+                    <div class="label">🏗️ SU软件</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">7</div>
+                    <div class="label">📊 PPT技巧</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">6</div>
+                    <div class="label">💻 电脑系统和软件</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">2</div>
+                    <div class="label">📱 公众号运营</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">4</div>
+                    <div class="label">🎮 个人/娱乐类</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div>
+                        <span class="category-title">📐 CAD技术教程</span>
+                        <span class="category-count">92篇</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 问题排查</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/92pvnK5JvpwDL54iZrB5pQ" target="_blank">CAD问题：CAD保存出现"警告 ：CAD 多重从属对象句柄"C" ..."</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/WfU5nxNdb24ol3idlMlPfA" target="_blank">CAD问题：从CAD的一张图复制到另一张图后文字或标注样式产生变化</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/n_yap0TCQb_cmQIA84FC_w" target="_blank">CAD问题：如何设置cad导出pdf不带批注</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/cQhxb2MmLzMv6ih9LXpd6g" target="_blank">CAD问题：窗口上方功能区不显示</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/F3dFQJaOYeTgExXVf6BTIw" target="_blank">CAD问题：关闭CAD打印PDF文件，文件自动打开的情况</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/TxKZDDYWIKkb56ah-d529g" target="_blank">CAD问题：cad粘贴进另一个文件时显示无效2.0</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/3IzD3oQggjoYhWJ18rwtJA" target="_blank">CAD问题：鼠标突然不能框选</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/7xol2Hjpy-ZVr1_aXzjd9Q" target="_blank">CAD问题：如何计算多个多段线的总长度</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/Ths-lu0M2W00xv_6xyz61g" target="_blank">CAD问题：CAD经典模式</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/AceubUEgA6enfVmk3LbgSA" target="_blank">CAD问题：cad不能拖拽打开</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/Rj4534kC9bYBwRkG0lLKOQ" target="_blank">CAD问题：cad粘贴进另一个文件时显示无效</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/E9KbYHde8FO061U-uw74OA" target="_blank">CAD问题：解决每次重启都要重新加载.lsp插件的问题</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/5SXDfzsyav7eR_Zc-xSeVg" target="_blank">CAD问题：如何解决超大图纸、无法复制等异常问题</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/cZpJyk8ioBQQDJobO5U0HQ" target="_blank">CAD问题：无法复制粘贴</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/eWBrE5_OZXV4mh4-jYLyuQ" target="_blank">CAD问题：在位编辑外部参照的时候，图层名称前会插入奇怪符号</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/ig1KVH8woajhHUvw-U6X6Q" target="_blank">CAD问题：无法先选择再执行命令</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/kJdXlDvqyAh376oJEME2eQ" target="_blank">CAD问题：如何将圆弧恢复成圆</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/SpNOQD-Xy1VTPRAtozNhxg" target="_blank">CAD问题：当关闭CAD图形后，再重新打开该图形时，会自动显示之前隐藏的所有对象</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/lwqQ1zNbdIdnwNT6FyLt4g" target="_blank">CAD问题：打开CAD后替换字体的弹框不自动弹出</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/8AUqtn437hmY5pgmm4b33g" target="_blank">CAD问题：安装CAD2014提示需要连接internet来安装windows组件</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/IUpKjXFx49n4mlZMpIBRWA" target="_blank">CAD问题：文字镜像后字是反的</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/YkxKaKW4WKm3H89gHWbwGw" target="_blank">CAD问题：CAD线型生成启用和禁用的切换</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/Oi4sylEg3Q8I8oPSycm2Lw" target="_blank">CAD问题：CAD中关闭"Shift+鼠标中键"三维旋转快捷操作</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/dZyBmrrzUwHU9LLEAEyHtA" target="_blank">CAD问题：CAD图形窗口外对象框选不中</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/z7z1BDpWo6rX0VQ6VUMLlw" target="_blank">CAD问题：剪切块(XC)边界和遮盖(WI)边界如何隐藏和显示</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/z1-TXtcvcnZ6rpyD9Qa8jQ" target="_blank">CAD 问题：特性面板不显示逐点标注的样式</a></li>
+                        </ul>
+                    </div>
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 基础操作</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/-mY7R1mkTCocYAyYuwdn7Q" target="_blank">CAD：布尔运算</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/CC3iXMGLiimpA0LfRVU_KQ" target="_blank">CAD：延伸ex、修剪tr与自动修剪extrim</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/yKJSLW2FopwjJbcuyk9PDg" target="_blank">CAD：删除重线overkill</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/u3g05TxWxzJ-CVS5Nh-Ibw" target="_blank">CAD：夹点的使用小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/xptUYnYFwsWT1e_V13HXWg" target="_blank">CAD：动态块-拉伸</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/d06fe6e4f-n_akf606aOQQ" target="_blank">CAD：重复上一个命令ADD(ADDSELECTED)</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/MZPJk_6gu_CBSJ5oTpwxsQ" target="_blank">CAD：动态块-阵列</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/_SSnwRclyOM8qeNVmhYHFg" target="_blank">CAD：外部参照使用小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/JpEyKvFOWivMEXqw43dIRA" target="_blank">CAD：图纸转正小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/3oGJeMwuHzJYE8b0qQD1KA" target="_blank">CAD：隔离对象与隐藏对象</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/rlSbGTseuW3JvQju5bsDwQ" target="_blank">CAD：阵列复制与等分复制</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/ZZcruEQib56oVrBbtG2dEw" target="_blank">CAD：PDF转CAD格式</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/_X5xvgiMakh3VIHABWRmgQ" target="_blank">CAD：选择类似对象（SIM）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/_dkInxRt4EgabHZ6Uf5iBg" target="_blank">CAD：快速选择（QSE）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/aojKk0A-doldBZG75qJf7g" target="_blank">CAD：设置绘图环境</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/qhAXq3mxOzhaG1OXHgpLzg" target="_blank">CAD：快速计算器QC、Ctrl+8</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/pP_cSxzt6tNgpiV7trtAxw" target="_blank">CAD：填充H</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/lKMeZgQOCbxY_dYRx8mBRQ" target="_blank">CAD：填充批量重新创建边界</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/abpLuhCACoF4a6PkZeDnHQ" target="_blank">CAD：在位编辑（REFEDIT）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/KzddPU9akDERm-7Qe4PSTg" target="_blank">CAD版本转换器Pro</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/_SSnwRclyOMqeNVmhYHFg" target="_blank">CAD：外部参照使用小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/ImpOJrGVpaNCANN8glO9Wg" target="_blank">CAD版本转换器</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/L6eCzWtQNbrJSMjgdKf1Qw" target="_blank">CAD：反转命令（REVERSE）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/oUksTe2X9GxZkvDq6iYtXQ" target="_blank">CAD：单行文字与多行文字相互转换小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/2G3yoctI6jd4cwv2X3UliQ" target="_blank">CAD：夹点的使用小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/YRSdTa4V6w06MRfsEW_Guw" target="_blank">CAD：删除重复对象overkill</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/SOEFZIrhxJPLXGoI93TG-g" target="_blank">CAD：所有文字置于最顶层；所有填充置于最底层小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/1mJvdHtnm3ELE-M6_68MeA" target="_blank">CAD：绘图次序（DR)</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/augYTc_9bcYLwo18t_cGNQ" target="_blank">CAD：合并命令（J）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/CSipQvZraJLz62V5bpuaiw" target="_blank">CAD：直线与多段线相互转换小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/km0B8oBNu1nCdkHyU7tPXw" target="_blank">CAD：Z轴归零小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/1ZHzAu3yU-LtPpvozraTYw" target="_blank">CAD：查找替换（Find）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/rRd6kXhsX1ZNLHcs8X80NA" target="_blank">CAD：更改背景颜色小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/iYCAtw1b3-DQDFCwRRxArQ" target="_blank">CAD：对象捕捉小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/E_Zeb8IY51KVKBqZrjym1Q" target="_blank">CAD：图块批量改名rename</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/dVhGBEDPp4TohMdIATD5gA" target="_blank">CAD：动态块-翻转</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/ORych-k7l_kby2WxTsSrMQ" target="_blank">免费caj转pdf方法！</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/7ygnfMJu5whHt1ZzRf8XhQ" target="_blank">免费登录知网，下载知网论文文献的方法！</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/-Di3-goRBnPeDhoWYCyIfw" target="_blank">滴答清单PC版（ticktick）解锁高级会员方式</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/W9IKXwTd5skQySiEZejhBQ" target="_blank">油猴（Tampermonkey）安装与使用方法</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/UpQxDKEPHu2e7URjHmTriA" target="_blank">CAD：插入 Excel 表格 2.0</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/rlpgNEdPST0CguzvmQ10Vg" target="_blank">CAD：插入图片</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/bP3pUjmq0EoKlNdATtTThA" target="_blank">CAD：插入 Excel 表格</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/oBxxIylAe7vQBNdFxnf2EA" target="_blank">CAD：阵列的使用 AR(ARRAY)</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/qVyzXscovl0qPZHVVFPDLQ" target="_blank">CAD：去教育版水印</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/fsgNkx7dT0-ZBzKOuCYsWg" target="_blank">CAD：选择小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/g9uj7JGejcVjmr2Xr2hJLA" target="_blank">CAD：反转命令（REVERSE）</a></li>
+                        </ul>
+                    </div>
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 天正系列</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/zzsZl1Pvw5uDYXoWgEgpDg" target="_blank">CAD：天正车位布置与编号</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/NYQyPAExjXGzzoL7KEOZag" target="_blank">天正：长度统计（cdtj）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/AI_EePAWpq9ifRsKo9aWOg" target="_blank">天正：绘制递增文字小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/Bj4j3qPZmoTlyxghY9XDYw" target="_blank">CAD：天正的查找替换（czth）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/WbKMPSi5MveozTt9T1JpAg" target="_blank">CAD：天正的图块转化</a></li>
+                        </ul>
+                    </div>
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 快捷键分享</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/DTngXEuv1PUxbR4rBKH_bg" target="_blank">CAD、天正快捷键</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/Rg5gBCaYOZNiEw3N0K1zQg" target="_blank">CAD、天正快捷键</a></li>
+                        </ul>
+                    </div>
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 图层管理</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/vXf4VZxTSMMRWUIGhssYFg" target="_blank">CAD：仅撤销图层状态命令（LAYERP）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/hMPA0Y2H7DkXzZA3sdBI-w" target="_blank">CAD：图层的合并、转换、删除</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/Wcdl_m-FEuR_MdPH1GVR7w" target="_blank">CAD：图层的开关、隔离、冻结、锁定</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/ZnkODpO0hfpe0Eq_9cB6wQ" target="_blank">CAD：布局和模型之间的对象相互转换"chspace"</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/2zalSNsalk4GulbPtyjHDw" target="_blank">CAD：布局图层应用</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/jsTR_SYrGKTNQ5sX8zBaMg" target="_blank">CAD：布局介绍</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/eGPGsFr11qM2AtDlrbRdzQ" target="_blank">CAD：图层的开关、隔离、冻结、锁定</a></li>
+                        </ul>
+                    </div>
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 块与动态块</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/KRqvfNJ1xYAVDKji0OneCQ" target="_blank">CAD：文字内容格式刷插件</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/LCxaNUZChv4nKD5DVlAaiQ" target="_blank">CAD：动态块 - 可见性</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/gLBFevOdsFjpFuDA6I5v0w" target="_blank">CAD：复制包含在块中的对象（NCOPY）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/68xu1dPKReS01k3madt_eQ" target="_blank">CAD：动态块 - 拉伸 2.0</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/mPzsmiV26S7uSlkqsp9A6w" target="_blank">CAD：属性块（ATT）</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div>
+                        <span class="category-title">🎨 Adobe软件</span>
+                        <span class="category-count">14篇</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 Photoshop 技巧</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/jILC9g2wUIB3ash0lJ7SDA" target="_blank">CAD：仅撤销删除操作命令（OOPS）</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/yMdgxZRwllYofpo8jepIGA" target="_blank">PS快捷键</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/yL09lgU0CHUbGSrdA3QxYQ" target="_blank">PS：内容识别填充-快速填充图像</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/aNO4iAXm3rLLFZyGyk3OEw" target="_blank">PS：批量导出图片小技巧</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/kpoUSObrVUJvjiVkky0avQ" target="_blank">PS：快速更改画笔的大小、硬度和透明度的小技巧</a></li>
+                        </ul>
+                    </div>
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 InDesign 排版</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/UA_p3AKWu0ocjubHTacZaQ" target="_blank">ID制作流程</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/NZrSlHtF5-IJXgygWy25mQ" target="_blank">ID快捷键</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/joZehfC_3CAQR3zo8PhwSQ" target="_blank">ID添加文字</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/RYpkIenz6rZsUvR0LH3eag" target="_blank">ID添加多页pdf</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/rqJM18mpVl_xGwb93_PlaQ" target="_blank">ID基础介绍</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/F__SFL3u2zcA7FqnLcJuEw" target="_blank">用ID给pdf文件加水印</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/iKxNpHuk7Pi0Pq97KGsdig" target="_blank">IDM的使用方法</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/R21rb-F_5atzPCgPsS03yQ" target="_blank">IDM安装与激活方法</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/8U8OFUonjPgBgw9Hs-6VcQ" target="_blank">ID 置入图片</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div>
+                        <span class="category-title">🤖 AI和效率工具</span>
+                        <span class="category-count">8篇</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 效率工具</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/jGhYYX5O_neaqF8Fo9FVPA" target="_blank">CAD问题：前期忘了安装Express Tools工具，如何再安装</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/T2yFyutlotu3qWXmjDGnow" target="_blank">魔法工具分享</a></li>
+                        </ul>
+                    </div>
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 AI推荐</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/iAepSnP0SzLbLbAXM-NcyQ" target="_blank">AI推荐：告别本地部署风险！用扣子Coze云端养"小龙虾"</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/Ny_g3TMlbBxb4p6zS2Bmmw" target="_blank">AI推荐：一键养"龙虾"，最傻瓜式的本地部署OpenClaw的方式</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/q1-J62TnlUF0t_f38j8dkw" target="_blank">AI推荐：Nano-banan提示词</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/Uz9IjnefZKdkcvMlKlGLQw" target="_blank">AI推荐：ChatGPT</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/9d-n2IY1t0grGITPBoywTQ" target="_blank">AI推荐：如何用Kimi找剧看~</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/1KVGJmFLN5GlsWYkE-73hA" target="_blank">AI推荐：kimi智能助手</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div>
+                        <span class="category-title">🏗️ SU软件</span>
+                        <span class="category-count">7篇</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 插件教程</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/mZQ71P2LqhEL_t_kyo-lDw" target="_blank">SU基础介绍</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/7-85HPkGY7AqAohQEbgJHg" target="_blank">SU基础插件</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/DXa-UtMGD0M0a_IT9-z9Jw" target="_blank">SU插件：Fredo联合推拉-JointPushPull</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/QJE6KFe_84wqKSG7WnERMg" target="_blank">SU插件：Fredo曲面绘制-ToolsOnSurfa</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/iL72ryXIej2dHG0hge71yQ" target="_blank">SU插件：用于创建曲面插件</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/u05QHs45n3ATR-CnUV96Zg" target="_blank">SU快捷键</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/LjwkDyko82adciFebC-XPQ" target="_blank">SU插件：布尔运算插件</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div>
+                        <span class="category-title">📊 PPT技巧</span>
+                        <span class="category-count">7篇</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 对象操作</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/i-Bx9oHxFWsd2TF4DkkLUA" target="_blank">PPT：免费PDF转PPT的方法</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/XLseygyuZNsi8klJbqU2Gw" target="_blank">PPT：粘贴ppt时，如何保持原版式</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/uCsqeOIuYS6vM1iUyd4qtg" target="_blank">PPT：快速更改对象样式</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/a4UL16V1ZYTrUJbYi3O5LA" target="_blank">PPT：自定义快速访问工具栏</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/1kFqFCGWF0brB8_gjRFkCQ" target="_blank">PPT：超好用插件iSlide</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/9RFezb_ZgrwA7gp45Z-ZGw" target="_blank">PPT：原位置替换底图</a></li>
+                        </ul>
+                    </div>
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 底图处理</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/VyVmt-9ZmX0Xbc11b2-Ytw" target="_blank">PPT：原位置替换底图</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div>
+                        <span class="category-title">💻 电脑系统和软件</span>
+                        <span class="category-count">6篇</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 系统问题</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/ncQpbnzjya8OBoIt0u0R8g" target="_blank">电脑问题：网络发现总是关闭</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/OSKwYhiPaeB2CRb2a06AtA" target="_blank">电脑问题：文件需要system的权限才能删除</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/GeN0mSzr8sEkjSkUWB7bAg" target="_blank">电脑问题：应用程序无法正常启动(0xc000007b)问题</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/hweJqxSIBcoxZ-m3MjCQLQ" target="_blank">CAD问题：同样的打印图纸尺寸为啥换了电脑打出来尺寸不一致</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/xID1p3VUC04DxFTlm5UJIA" target="_blank">电脑问题：只有一个 C 盘如何再分区</a></li>
+                        </ul>
+                    </div>
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 软件安装</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/bx2NMWPMQgepwOk2jZ3Wbg" target="_blank">Win+系列快捷键</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div>
+                        <span class="category-title">📱 公众号运营</span>
+                        <span class="category-count">2篇</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 平台使用</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/Lf7ScgHI8F2cgpQehpZkRA" target="_blank">【蛇年快乐~】公众号内文章查找方法</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/wmsKOo3z61-d-8eDwhUdnw" target="_blank">公众号内目录（阶段性更新）</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div>
+                        <span class="category-title">🎮 个人/娱乐类</span>
+                        <span class="category-count">4篇</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="subcategory">
+                        <div class="subcategory-title">📁 休闲内容</div>
+                        <ul class="article-list">
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/RL9d3wMxFnnJJ5lgZTzNyA" target="_blank">看剧摸鱼-茶杯狐新地址</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/cv4gYxycpsHG4B5-rS2rmw" target="_blank">看剧摸鱼-《重启人生》番外篇 I 在线观看</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/5By7RZLRk6sqT78fn9psow" target="_blank">看剧摸鱼</a></li>
+                            <li class="article-item"><a href="https://mp.weixin.qq.com/s/tfGQUJAQbYKdBUONLiXibQ" target="_blank">自制电脑壁纸</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>生成时间：2026/3/31 10:11:53 | 共 140 篇文章</p>
+        </div>
+    </div>
+    
+    <script>
+        function toggleCategory(header) {
+            const category = header.parentElement;
+            category.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
