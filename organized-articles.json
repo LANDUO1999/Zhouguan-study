@@ -46,7 +46,7 @@
     "url": "https://mp.weixin.qq.com/s/zzsZl1Pvw5uDYXoWgEgpDg",
     "date": "未知日期",
     "category": "CAD / 天正",
-    "subcategory": "进阶技巧"
+    "subcategory": "天正 / 快捷键"
   },
   {
     "title": "CAD：夹点的使用小技巧",
@@ -178,8 +178,8 @@
     "title": "CAD：仅撤销删除操作命令（OOPS）",
     "url": "https://mp.weixin.qq.com/s/jILC9g2wUIB3ash0lJ7SDA",
     "date": "未知日期",
-    "category": "Adobe 软件",
-    "subcategory": "Photoshop"
+    "category": "效率工具",
+    "subcategory": "软件工具"
   },
   {
     "title": "CAD：在位编辑（REFEDIT）",
@@ -361,14 +361,14 @@
     "url": "https://mp.weixin.qq.com/s/NYQyPAExjXGzzoL7KEOZag",
     "date": "未知日期",
     "category": "CAD / 天正",
-    "subcategory": "进阶技巧"
+    "subcategory": "天正 / 快捷键"
   },
   {
     "title": "天正：绘制递增文字小技巧",
     "url": "https://mp.weixin.qq.com/s/AI_EePAWpq9ifRsKo9aWOg",
     "date": "未知日期",
     "category": "CAD / 天正",
-    "subcategory": "进阶技巧"
+    "subcategory": "天正 / 快捷键"
   },
   {
     "title": "CAD、天正快捷键",
@@ -445,7 +445,7 @@
     "url": "https://mp.weixin.qq.com/s/eWBrE5_OZXV4mh4-jYLyuQ",
     "date": "未知日期",
     "category": "CAD / 天正",
-    "subcategory": "问题排查"
+    "subcategory": "基础操作"
   },
   {
     "title": "CAD问题：无法先选择再执行命令",
@@ -458,8 +458,8 @@
     "title": "CAD问题：前期忘了安装Express Tools工具，如何再安装",
     "url": "https://mp.weixin.qq.com/s/jGhYYX5O_neaqF8Fo9FVPA",
     "date": "未知日期",
-    "category": "AI 工具",
-    "subcategory": "使用技巧"
+    "category": "CAD / 天正",
+    "subcategory": "问题排查"
   },
   {
     "title": "CAD问题：如何将圆弧恢复成圆",
@@ -529,7 +529,7 @@
     "url": "https://mp.weixin.qq.com/s/Bj4j3qPZmoTlyxghY9XDYw",
     "date": "未知日期",
     "category": "CAD / 天正",
-    "subcategory": "进阶技巧"
+    "subcategory": "基础操作"
   },
   {
     "title": "SU基础介绍",
@@ -577,8 +577,8 @@
     "title": "SU插件：布尔运算插件",
     "url": "https://mp.weixin.qq.com/s/LjwkDyko82adciFebC-XPQ",
     "date": "未知日期",
-    "category": "SU 软件",
-    "subcategory": "插件与工具"
+    "category": "CAD / 天正",
+    "subcategory": "基础操作"
   },
   {
     "title": "ID制作流程",
@@ -612,8 +612,8 @@
     "title": "PS：内容识别填充-快速填充图像",
     "url": "https://mp.weixin.qq.com/s/yL09lgU0CHUbGSrdA3QxYQ",
     "date": "未知日期",
-    "category": "Adobe 软件",
-    "subcategory": "Photoshop"
+    "category": "CAD / 天正",
+    "subcategory": "基础操作"
   },
   {
     "title": "PS：批量导出图片小技巧",
@@ -648,7 +648,7 @@
     "url": "https://mp.weixin.qq.com/s/i-Bx9oHxFWsd2TF4DkkLUA",
     "date": "未知日期",
     "category": "办公软件技巧",
-    "subcategory": "演示文稿"
+    "subcategory": "办公工具"
   },
   {
     "title": "PPT：粘贴ppt时，如何保持原版式",
@@ -676,7 +676,7 @@
     "url": "https://mp.weixin.qq.com/s/1kFqFCGWF0brB8_gjRFkCQ",
     "date": "未知日期",
     "category": "办公软件技巧",
-    "subcategory": "演示文稿"
+    "subcategory": "办公工具"
   },
   {
     "title": "PPT：原位置替换底图",
@@ -704,7 +704,7 @@
     "url": "https://mp.weixin.qq.com/s/q1-J62TnlUF0t_f38j8dkw",
     "date": "未知日期",
     "category": "AI 工具",
-    "subcategory": "工具推荐"
+    "subcategory": "使用技巧"
   },
   {
     "title": "AI推荐：ChatGPT",
@@ -732,7 +732,7 @@
     "url": "https://mp.weixin.qq.com/s/ORych-k7l_kby2WxTsSrMQ",
     "date": "未知日期",
     "category": "效率工具",
-    "subcategory": "文档与资源"
+    "subcategory": "软件工具"
   },
   {
     "title": "免费登录知网，下载知网论文文献的方法！",
@@ -746,21 +746,21 @@
     "url": "https://mp.weixin.qq.com/s/-Di3-goRBnPeDhoWYCyIfw",
     "date": "未知日期",
     "category": "效率工具",
-    "subcategory": "文档与资源"
+    "subcategory": "软件工具"
   },
   {
     "title": "油猴（Tampermonkey）安装与使用方法",
     "url": "https://mp.weixin.qq.com/s/W9IKXwTd5skQySiEZejhBQ",
     "date": "未知日期",
     "category": "效率工具",
-    "subcategory": "文档与资源"
+    "subcategory": "软件工具"
   },
   {
     "title": "魔法工具分享",
     "url": "https://mp.weixin.qq.com/s/T2yFyutlotu3qWXmjDGnow",
     "date": "未知日期",
     "category": "效率工具",
-    "subcategory": "文档与资源"
+    "subcategory": "软件工具"
   },
   {
     "title": "电脑问题：网络发现总是关闭",
@@ -794,22 +794,22 @@
     "title": "CAD问题：同样的打印图纸尺寸为啥换了电脑打出来尺寸不一致",
     "url": "https://mp.weixin.qq.com/s/hweJqxSIBcoxZ-m3MjCQLQ",
     "date": "未知日期",
-    "category": "电脑系统和软件",
-    "subcategory": "系统问题"
+    "category": "CAD / 天正",
+    "subcategory": "问题排查"
   },
   {
     "title": "IDM的使用方法",
     "url": "https://mp.weixin.qq.com/s/iKxNpHuk7Pi0Pq97KGsdig",
     "date": "未知日期",
-    "category": "Adobe 软件",
-    "subcategory": "InDesign"
+    "category": "效率工具",
+    "subcategory": "软件工具"
   },
   {
     "title": "IDM安装与激活方法",
     "url": "https://mp.weixin.qq.com/s/R21rb-F_5atzPCgPsS03yQ",
     "date": "未知日期",
-    "category": "Adobe 软件",
-    "subcategory": "InDesign"
+    "category": "效率工具",
+    "subcategory": "软件工具"
   },
   {
     "title": "【蛇年快乐~】公众号内文章查找方法",
@@ -886,7 +886,7 @@
     "url": "https://mp.weixin.qq.com/s/68xu1dPKReS01k3madt_eQ",
     "date": "未知日期",
     "category": "CAD / 天正",
-    "subcategory": "进阶技巧"
+    "subcategory": "基础操作"
   },
   {
     "title": "CAD：属性块（ATT）",

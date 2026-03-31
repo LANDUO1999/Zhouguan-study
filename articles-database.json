@@ -1,13 +1,13 @@
 {
   "totalArticles": 140,
   "categoryStats": {
-    "CAD / 天正": 88,
-    "Adobe 软件": 14,
-    "AI 工具": 7,
-    "SU 软件": 7,
+    "CAD / 天正": 92,
+    "效率工具": 8,
+    "SU 软件": 6,
+    "Adobe 软件": 10,
     "办公软件技巧": 7,
-    "效率工具": 5,
-    "电脑系统和软件": 6,
+    "AI 工具": 6,
+    "电脑系统和软件": 5,
     "公众号运营": 2,
     "个人 / 娱乐类": 4
   },
@@ -52,7 +52,7 @@
       "url": "https://mp.weixin.qq.com/s/zzsZl1Pvw5uDYXoWgEgpDg",
       "title": "CAD：天正车位布置与编号",
       "category": "CAD / 天正",
-      "subcategory": "进阶技巧"
+      "subcategory": "天正 / 快捷键"
     },
     {
       "url": "https://mp.weixin.qq.com/s/u3g05TxWxzJ-CVS5Nh-Ibw",
@@ -165,8 +165,8 @@
     {
       "url": "https://mp.weixin.qq.com/s/jILC9g2wUIB3ash0lJ7SDA",
       "title": "CAD：仅撤销删除操作命令（OOPS）",
-      "category": "Adobe 软件",
-      "subcategory": "Photoshop"
+      "category": "效率工具",
+      "subcategory": "软件工具"
     },
     {
       "url": "https://mp.weixin.qq.com/s/abpLuhCACoF4a6PkZeDnHQ",
@@ -322,13 +322,13 @@
       "url": "https://mp.weixin.qq.com/s/NYQyPAExjXGzzoL7KEOZag",
       "title": "天正：长度统计（cdtj）",
       "category": "CAD / 天正",
-      "subcategory": "进阶技巧"
+      "subcategory": "天正 / 快捷键"
     },
     {
       "url": "https://mp.weixin.qq.com/s/AI_EePAWpq9ifRsKo9aWOg",
       "title": "天正：绘制递增文字小技巧",
       "category": "CAD / 天正",
-      "subcategory": "进阶技巧"
+      "subcategory": "天正 / 快捷键"
     },
     {
       "url": "https://mp.weixin.qq.com/s/Rg5gBCaYOZNiEw3N0K1zQg",
@@ -394,7 +394,7 @@
       "url": "https://mp.weixin.qq.com/s/eWBrE5_OZXV4mh4-jYLyuQ",
       "title": "CAD问题：在位编辑外部参照的时候，图层名称前会插入奇怪符号",
       "category": "CAD / 天正",
-      "subcategory": "问题排查"
+      "subcategory": "基础操作"
     },
     {
       "url": "https://mp.weixin.qq.com/s/ig1KVH8woajhHUvw-U6X6Q",
@@ -405,8 +405,8 @@
     {
       "url": "https://mp.weixin.qq.com/s/jGhYYX5O_neaqF8Fo9FVPA",
       "title": "CAD问题：前期忘了安装Express Tools工具，如何再安装",
-      "category": "AI 工具",
-      "subcategory": "使用技巧"
+      "category": "CAD / 天正",
+      "subcategory": "问题排查"
     },
     {
       "url": "https://mp.weixin.qq.com/s/kJdXlDvqyAh376oJEME2eQ",
@@ -466,7 +466,7 @@
       "url": "https://mp.weixin.qq.com/s/Bj4j3qPZmoTlyxghY9XDYw",
       "title": "CAD：天正的查找替换（czth）",
       "category": "CAD / 天正",
-      "subcategory": "进阶技巧"
+      "subcategory": "基础操作"
     },
     {
       "url": "https://mp.weixin.qq.com/s/mZQ71P2LqhEL_t_kyo-lDw",
@@ -507,8 +507,8 @@
     {
       "url": "https://mp.weixin.qq.com/s/LjwkDyko82adciFebC-XPQ",
       "title": "SU插件：布尔运算插件",
-      "category": "SU 软件",
-      "subcategory": "插件与工具"
+      "category": "CAD / 天正",
+      "subcategory": "基础操作"
     },
     {
       "url": "https://mp.weixin.qq.com/s/UA_p3AKWu0ocjubHTacZaQ",
@@ -537,8 +537,8 @@
     {
       "url": "https://mp.weixin.qq.com/s/yL09lgU0CHUbGSrdA3QxYQ",
       "title": "PS：内容识别填充-快速填充图像",
-      "category": "Adobe 软件",
-      "subcategory": "Photoshop"
+      "category": "CAD / 天正",
+      "subcategory": "基础操作"
     },
     {
       "url": "https://mp.weixin.qq.com/s/aNO4iAXm3rLLFZyGyk3OEw",
@@ -568,7 +568,7 @@
       "url": "https://mp.weixin.qq.com/s/i-Bx9oHxFWsd2TF4DkkLUA",
       "title": "PPT：免费PDF转PPT的方法",
       "category": "办公软件技巧",
-      "subcategory": "演示文稿"
+      "subcategory": "办公工具"
     },
     {
       "url": "https://mp.weixin.qq.com/s/XLseygyuZNsi8klJbqU2Gw",
@@ -592,7 +592,7 @@
       "url": "https://mp.weixin.qq.com/s/1kFqFCGWF0brB8_gjRFkCQ",
       "title": "PPT：超好用插件iSlide",
       "category": "办公软件技巧",
-      "subcategory": "演示文稿"
+      "subcategory": "办公工具"
     },
     {
       "url": "https://mp.weixin.qq.com/s/9RFezb_ZgrwA7gp45Z-ZGw",
@@ -616,7 +616,7 @@
       "url": "https://mp.weixin.qq.com/s/q1-J62TnlUF0t_f38j8dkw",
       "title": "AI推荐：Nano-banan提示词",
       "category": "AI 工具",
-      "subcategory": "工具推荐"
+      "subcategory": "使用技巧"
     },
     {
       "url": "https://mp.weixin.qq.com/s/Uz9IjnefZKdkcvMlKlGLQw",
@@ -640,7 +640,7 @@
       "url": "https://mp.weixin.qq.com/s/ORych-k7l_kby2WxTsSrMQ",
       "title": "免费caj转pdf方法！",
       "category": "效率工具",
-      "subcategory": "文档与资源"
+      "subcategory": "软件工具"
     },
     {
       "url": "https://mp.weixin.qq.com/s/7ygnfMJu5whHt1ZzRf8XhQ",
@@ -652,19 +652,19 @@
       "url": "https://mp.weixin.qq.com/s/-Di3-goRBnPeDhoWYCyIfw",
       "title": "滴答清单PC版（ticktick）解锁高级会员方式",
       "category": "效率工具",
-      "subcategory": "文档与资源"
+      "subcategory": "软件工具"
     },
     {
       "url": "https://mp.weixin.qq.com/s/W9IKXwTd5skQySiEZejhBQ",
       "title": "油猴（Tampermonkey）安装与使用方法",
       "category": "效率工具",
-      "subcategory": "文档与资源"
+      "subcategory": "软件工具"
     },
     {
       "url": "https://mp.weixin.qq.com/s/T2yFyutlotu3qWXmjDGnow",
       "title": "魔法工具分享",
       "category": "效率工具",
-      "subcategory": "文档与资源"
+      "subcategory": "软件工具"
     },
     {
       "url": "https://mp.weixin.qq.com/s/ncQpbnzjya8OBoIt0u0R8g",
@@ -693,20 +693,20 @@
     {
       "url": "https://mp.weixin.qq.com/s/hweJqxSIBcoxZ-m3MjCQLQ",
       "title": "CAD问题：同样的打印图纸尺寸为啥换了电脑打出来尺寸不一致",
-      "category": "电脑系统和软件",
-      "subcategory": "系统问题"
+      "category": "CAD / 天正",
+      "subcategory": "问题排查"
     },
     {
       "url": "https://mp.weixin.qq.com/s/iKxNpHuk7Pi0Pq97KGsdig",
       "title": "IDM的使用方法",
-      "category": "Adobe 软件",
-      "subcategory": "InDesign"
+      "category": "效率工具",
+      "subcategory": "软件工具"
     },
     {
       "url": "https://mp.weixin.qq.com/s/R21rb-F_5atzPCgPsS03yQ",
       "title": "IDM安装与激活方法",
-      "category": "Adobe 软件",
-      "subcategory": "InDesign"
+      "category": "效率工具",
+      "subcategory": "软件工具"
     },
     {
       "url": "https://mp.weixin.qq.com/s/Lf7ScgHI8F2cgpQehpZkRA",
@@ -772,7 +772,7 @@
       "url": "https://mp.weixin.qq.com/s/68xu1dPKReS01k3madt_eQ",
       "title": "CAD：动态块 - 拉伸 2.0",
       "category": "CAD / 天正",
-      "subcategory": "进阶技巧"
+      "subcategory": "基础操作"
     },
     {
       "url": "https://mp.weixin.qq.com/s/mPzsmiV26S7uSlkqsp9A6w",
