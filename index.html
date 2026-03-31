@@ -727,43 +727,10 @@
             }
         }
     
-        .search-container {
-            position: relative;
-            margin-bottom: 20px;
-            z-index: 100;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 15px 20px;
-            font-size: 16px;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            background: white;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-        
         .search-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-        
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid #e9ecef;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            margin-top: 10px;
-            max-height: 400px;
-            overflow-y: auto;
-            display: none;
-            z-index: 1000;
+            border-color: #C67B5C;
+            box-shadow: 0 0 0 4px rgba(198, 123, 92, 0.1);
         }
         
         .search-results.show {
@@ -771,7 +738,7 @@
         }
         
         .search-result-item {
-            padding: 12px 20px;
+            padding: 12px 16px;
             border-bottom: 1px solid #f8f9fa;
             cursor: pointer;
             transition: background 0.2s;
@@ -786,20 +753,21 @@
         }
         
         .search-result-title {
-            font-size: 15px;
-            color: #2c3e50;
+            font-size: 14px;
+            color: #3D352A;
             margin-bottom: 4px;
         }
         
         .search-result-category {
-            font-size: 13px;
-            color: #6c757d;
+            font-size: 12px;
+            color: #7A6F5F;
         }
         
         .search-no-results {
-            padding: 30px;
+            padding: 24px;
             text-align: center;
-            color: #6c757d;
+            color: #7A6F5F;
+            font-size: 14px;
         }
 </style>
 </head>
@@ -817,6 +785,11 @@
                 <div class="sidebar-stats">
                     <div class="stat-item">
                         <div class="stat-number">142</div>
+
+        <div class="search-container" style="margin: 20px 0; position: relative; z-index: 100;">
+          <input type="text" class="search-input" id="searchInput" placeholder="🔍 搜索文章标题..." oninput="searchArticles()" style="width: 100%; padding: 12px 16px; font-size: 14px; border: 2px solid #e9ecef; border-radius: 10px; background: white; font-family: inherit; transition: all 0.3s;">
+          <div class="search-results" id="searchResults" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e9ecef; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); margin-top: 10px; max-height: 300px; overflow-y: auto; display: none; z-index: 1000;"></div>
+        </div>
                         <div class="stat-label">篇文章</div>
                     </div>
                     <div class="stat-item">
@@ -855,12 +828,7 @@
                     <span class="xianyu-icon">🐟</span>
                     <span>咸鱼店铺</span>
                 </a>
-                    <div class="search-container">
-          <input type="text" class="search-input" id="searchInput" placeholder="🔍 搜索文章标题..." oninput="searchArticles()">
-          <div class="search-results" id="searchResults"></div>
-        </div>
-
-</div>
+            </div>
         </aside>
         
         <main class="main-content" id="mainContent">
@@ -923,7 +891,7 @@
     </div>
 </div>
 </div>
-<div id="single-categories-container"><div id="single-categories-container">
+<div id="single-categories-container">
 
       <div class="single-category-view" id="view-CAD / 天正" style="display: none;">
         <button class="back-btn" onclick="showAllCategories()">← 返回全部分类</button>
@@ -938,7 +906,7 @@
         <div class="subcategories-container">
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 基础操作</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/-mY7R1mkTCocYAyYuwdn7Q" target="_blank" class="article-item">
           <div class="article-title">CAD：布尔运算</div>
           <div class="article-meta">
@@ -1279,7 +1247,7 @@
           </div>
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 问题排查</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/92pvnK5JvpwDL54iZrB5pQ" target="_blank" class="article-item">
           <div class="article-title">CAD问题：CAD保存出现"警告 ：CAD 多重从属对象句柄"C" ..."</div>
           <div class="article-meta">
@@ -1473,7 +1441,7 @@
           </div>
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 进阶技巧</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/vXf4VZxTSMMRWUIGhssYFg" target="_blank" class="article-item">
           <div class="article-title">CAD：仅撤销图层状态命令（LAYERP）</div>
           <div class="article-meta">
@@ -1562,7 +1530,7 @@
           </div>
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 天正 / 快捷键</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/zzsZl1Pvw5uDYXoWgEgpDg" target="_blank" class="article-item">
           <div class="article-title">CAD：天正车位布置与编号</div>
           <div class="article-meta">
@@ -1616,7 +1584,7 @@
         <div class="subcategories-container">
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 Photoshop</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/yMdgxZRwllYofpo8jepIGA" target="_blank" class="article-item">
           <div class="article-title">PS快捷键</div>
           <div class="article-meta">
@@ -1642,7 +1610,7 @@
           </div>
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 InDesign</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/UA_p3AKWu0ocjubHTacZaQ" target="_blank" class="article-item">
           <div class="article-title">ID制作流程</div>
           <div class="article-meta">
@@ -1710,7 +1678,7 @@
         <div class="subcategories-container">
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 工具推荐</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/iAepSnP0SzLbLbAXM-NcyQ" target="_blank" class="article-item">
           <div class="article-title">AI推荐：告别本地部署风险！用扣子Coze云端养"小龙虾"</div>
           <div class="article-meta">
@@ -1750,7 +1718,7 @@
           </div>
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 使用技巧</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/q1-J62TnlUF0t_f38j8dkw" target="_blank" class="article-item">
           <div class="article-title">AI推荐：Nano-banan提示词</div>
           <div class="article-meta">
@@ -1776,7 +1744,7 @@
         <div class="subcategories-container">
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 基础入门</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/mZQ71P2LqhEL_t_kyo-lDw" target="_blank" class="article-item">
           <div class="article-title">SU基础介绍</div>
           <div class="article-meta">
@@ -1788,7 +1756,7 @@
           </div>
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 插件与工具</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/7-85HPkGY7AqAohQEbgJHg" target="_blank" class="article-item">
           <div class="article-title">SU基础插件</div>
           <div class="article-meta">
@@ -1842,7 +1810,7 @@
         <div class="subcategories-container">
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 演示文稿</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/XLseygyuZNsi8klJbqU2Gw" target="_blank" class="article-item">
           <div class="article-title">PPT：粘贴ppt时，如何保持原版式</div>
           <div class="article-meta">
@@ -1882,7 +1850,7 @@
           </div>
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 办公工具</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/i-Bx9oHxFWsd2TF4DkkLUA" target="_blank" class="article-item">
           <div class="article-title">PPT：免费PDF转PPT的方法</div>
           <div class="article-meta">
@@ -1915,7 +1883,7 @@
         <div class="subcategories-container">
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 软件工具</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/jILC9g2wUIB3ash0lJ7SDA" target="_blank" class="article-item">
           <div class="article-title">CAD：仅撤销删除操作命令（OOPS）</div>
           <div class="article-meta">
@@ -1969,7 +1937,7 @@
           </div>
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 文档与资源</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/7ygnfMJu5whHt1ZzRf8XhQ" target="_blank" class="article-item">
           <div class="article-title">免费登录知网，下载知网论文文献的方法！</div>
           <div class="article-meta">
@@ -1995,7 +1963,7 @@
         <div class="subcategories-container">
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 系统问题</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/ncQpbnzjya8OBoIt0u0R8g" target="_blank" class="article-item">
           <div class="article-title">电脑问题：网络发现总是关闭</div>
           <div class="article-meta">
@@ -2028,7 +1996,7 @@
           </div>
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 系统技巧</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/bx2NMWPMQgepwOk2jZ3Wbg" target="_blank" class="article-item">
           <div class="article-title">Win+系列快捷键</div>
           <div class="article-meta">
@@ -2054,7 +2022,7 @@
         <div class="subcategories-container">
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 平台使用</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/Lf7ScgHI8F2cgpQehpZkRA" target="_blank" class="article-item">
           <div class="article-title">【蛇年快乐~】公众号内文章查找方法</div>
           <div class="article-meta">
@@ -2087,7 +2055,7 @@
         <div class="subcategories-container">
           <div class="subcategory">
             <h4 class="subcategory-title" onclick="toggleSubcategory(this)"><span class="toggle-icon">▶</span>📁 休闲内容</h4>
-            <div class="article-list" style="display: none;">
+            <div class="article-list">
         <a href="https://mp.weixin.qq.com/s/RL9d3wMxFnnJJ5lgZTzNyA" target="_blank" class="article-item">
           <div class="article-title">看剧摸鱼-茶杯狐新地址</div>
           <div class="article-meta">
@@ -2160,7 +2128,7 @@
         document.addEventListener('click', function(e) {
             const searchContainer = document.querySelector('.search-container');
             const resultsContainer = document.getElementById('searchResults');
-            if (!searchContainer.contains(e.target)) {
+            if (searchContainer && !searchContainer.contains(e.target)) {
                 resultsContainer.classList.remove('show');
             }
         });
