@@ -2124,8 +2124,6 @@
       </div>
 
 </div>
-
-      <div id="search-results-view" style="display: none;"></div>
 </main>
 
         <div class="qrcode-container">
@@ -2143,64 +2141,36 @@
         function searchArticles() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             const allCategoriesView = document.getElementById('all-categories-view');
-            const searchResultsView = document.getElementById('search-results-view');
             const resultsContainer = document.getElementById('searchResults');
             
-            // 隐藏所有单个分类视图
             const singleViews = document.querySelectorAll('.single-category-view');
             singleViews.forEach(view => view.style.display = 'none');
             
             if (searchTerm === '') {
-                // 清空搜索，显示所有分类
                 allCategoriesView.style.display = 'flex';
-                searchResultsView.style.display = 'none';
                 if (resultsContainer) resultsContainer.classList.remove('show');
                 return;
             }
             
-            // 隐藏分类视图和搜索下拉，显示搜索结果在内容区
             allCategoriesView.style.display = 'none';
-            searchResultsView.style.display = 'block';
-            if (resultsContainer) resultsContainer.classList.remove('show');
             
             const results = allArticles.filter(article => 
                 article.title.toLowerCase().includes(searchTerm)
             );
             
-            // 显示搜索结果
-            let resultsHtml = '';
-            if (results.length === 0) {
-                resultsHtml = '<div style="text-align: center; padding: 60px 20px; color: #7A6F5F;"><h3>没有找到相关文章</h3><p>试试其他关键词</p></div>';
-            } else {
-                resultsHtml = '<button class="back-btn" onclick="showAllCategories()">← 返回全部分类</button>';
-                resultsHtml += '<div class="category-detail-header" style="margin-bottom: 30px;">';
-                resultsHtml += '<div class="detail-icon">🔍</div>';
-                resultsHtml += '<div class="detail-info">';
-                resultsHtml += '<h2 class="detail-title">搜索结果</h2>';
-                resultsHtml += '<p class="detail-desc">关键词：' + searchTerm + '</p>';
-                resultsHtml += '<span class="detail-badge">' + results.length + '篇文章</span>';
-                resultsHtml += '</div>';
-                resultsHtml += '</div>';
-                resultsHtml += '<div class="subcategories-container">';
-                resultsHtml += '<div class="subcategory">';
-                resultsHtml += '<div class="article-list">';
-                
-                results.forEach(article => {
-                    resultsHtml += '<a href="' + article.url + '" target="_blank" class="article-item">';
-                    resultsHtml += '<div class="article-title">' + article.title + '</div>';
-                    resultsHtml += '<div class="article-meta">';
-                    resultsHtml += '<span class="article-date">未知日期</span>';
-                    resultsHtml += '<span class="article-tag">' + article.category + '</span>';
-                    resultsHtml += '</div>';
-                    resultsHtml += '</a>';
-                });
-                
-                resultsHtml += '</div>';
-                resultsHtml += '</div>';
-                resultsHtml += '</div>';
+            if (resultsContainer) {
+                if (results.length === 0) {
+                    resultsContainer.innerHTML = '<div class="search-no-results">没有找到相关文章</div>';
+                } else {
+                    resultsContainer.innerHTML = results.map(article => 
+                        '<a href="' + article.url + '" target="_blank" class="search-result-item" style="text-decoration: none; display: block; padding: 12px 16px; border-bottom: 1px solid #f8f9fa;">' +
+                            '<div style="font-weight: 600; color: #3D352A;">' + article.title + '</div>' +
+                            '<div style="font-size: 12px; color: #7A6F5F; margin-top: 4px;">' + article.category + '</div>' +
+                        '</a>'
+                    ).join('');
+                }
+                resultsContainer.classList.add('show');
             }
-            
-            searchResultsView.innerHTML = resultsHtml;
         }
         // 点击页面其他地方关闭搜索结果
         document.addEventListener('click', function(e) {
@@ -2231,13 +2201,13 @@
             }
         }
 
-                function showAllCategories() {
+        function showAllCategories() {
             document.getElementById('all-categories-view').style.display = 'flex';
-            document.getElementById('search-results-view').style.display = 'none';
-            const singleViews = document.querySelectorAll('.single-category-view');
-            singleViews.forEach(view => view.style.display = 'none');
-            // 清空搜索框
-            document.getElementById('searchInput').value = '';
+            document.getElementById('all-categories-view').style.flexDirection = 'column';
+            categoryIds.forEach(id => {
+                const view = document.getElementById('view-' + id);
+                if (view) view.style.display = 'none';
+            });
             scrollContentToTop();
         }
         
