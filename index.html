@@ -2149,8 +2149,10 @@
             if (searchTerm === '') {
                 allCategoriesView.style.display = 'flex';
                 allCategoriesView.style.flexDirection = 'column';
-                if (resultsContainer) resultsContainer.classList.remove('show');
-                if (resultsContainer) resultsContainer.style.display = 'none';
+                if (resultsContainer) {
+                    resultsContainer.classList.remove('show');
+                    resultsContainer.style.display = 'none';
+                }
                 return;
             }
             
@@ -2162,7 +2164,6 @@
             );
             
             if (resultsContainer) {
-                resultsContainer.style.display = 'block';
                 if (results.length === 0) {
                     resultsContainer.innerHTML = '<div class="search-no-results">没有找到相关文章</div>';
                 } else {
@@ -2173,6 +2174,7 @@
                         '</a>'
                     ).join('');
                 }
+                resultsContainer.style.display = 'block';
                 resultsContainer.classList.add('show');
             }
         }
@@ -2182,6 +2184,7 @@
             const resultsContainer = document.getElementById('searchResults');
             if (searchContainer && !searchContainer.contains(e.target)) {
                 resultsContainer.classList.remove('show');
+                resultsContainer.style.display = 'none';
             }
         });
 
