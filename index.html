@@ -2148,17 +2148,21 @@
             
             if (searchTerm === '') {
                 allCategoriesView.style.display = 'flex';
+                allCategoriesView.style.flexDirection = 'column';
                 if (resultsContainer) resultsContainer.classList.remove('show');
+                if (resultsContainer) resultsContainer.style.display = 'none';
                 return;
             }
             
-            allCategoriesView.style.display = 'none';
+            allCategoriesView.style.display = 'flex';
+            allCategoriesView.style.flexDirection = 'column';
             
             const results = allArticles.filter(article => 
                 article.title.toLowerCase().includes(searchTerm)
             );
             
             if (resultsContainer) {
+                resultsContainer.style.display = 'block';
                 if (results.length === 0) {
                     resultsContainer.innerHTML = '<div class="search-no-results">没有找到相关文章</div>';
                 } else {
