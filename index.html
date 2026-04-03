@@ -836,10 +836,10 @@
 
                 <div class="music-player">
                     <div class="music-info">
-                        <div class="music-cover">🎵</div>
+                        <div class="music-cover" id="musicCover">🎵</div>
                         <div class="music-details">
-                            <div class="music-song">晴天的午后</div>
-                            <div class="music-artist">轻音乐集</div>
+                            <div class="music-song" id="musicSong">光年之外</div>
+                            <div class="music-artist" id="musicArtist">邓紫棋</div>
                         </div>
                     </div>
                     <div class="music-controls">
@@ -2245,6 +2245,79 @@
         let isPlaying = false;
         let progressInterval = null;
         let currentProgress = 0;
+        let currentTrackIndex = 0;
+        let audioPlayer = null;
+
+        // 播放列表 - 邓紫棋和周深的舒缓歌曲
+        const playlist = [
+          {
+            "title": "光年之外",
+            "artist": "邓紫棋",
+            "cover": "🎤",
+            "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+          },
+          {
+            "title": "泡沫",
+            "artist": "邓紫棋",
+            "cover": "🎵",
+            "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+          },
+          {
+            "title": "回忆的沙漏",
+            "artist": "邓紫棋",
+            "cover": "🎼",
+            "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+          },
+          {
+            "title": "桃花诺",
+            "artist": "邓紫棋",
+            "cover": "🌸",
+            "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+          },
+          {
+            "title": "大鱼",
+            "artist": "周深",
+            "cover": "🐟",
+            "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+          },
+          {
+            "title": "起风了",
+            "artist": "周深",
+            "cover": "🍃",
+            "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
+          },
+          {
+            "title": "光亮",
+            "artist": "周深",
+            "cover": "✨",
+            "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
+          },
+          {
+            "title": "梅香如故",
+            "artist": "周深",
+            "cover": "🌺",
+            "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
+          }
+        ];
+
+        function initAudioPlayer() {
+          audioPlayer = new Audio();
+          audioPlayer.addEventListener('ended', nextTrack);
+          audioPlayer.addEventListener('timeupdate', updateProgress);
+          audioPlayer.addEventListener('loadedmetadata', updateDuration);
+          loadTrack(currentTrackIndex);
+        }
+
+        function loadTrack(index) {
+          currentTrackIndex = index;
+          const track = playlist[currentTrackIndex];
+          audioPlayer.src = track.source;
+          
+          // 更新显示
+          document.getElementById('musicSong').textContent = track.title;
+          document.getElementById('musicArtist').textContent = track.artist;
+          document.getElementById('musicCover').textContent = track.cover;
+        }
 
         function isMobile() {
             return window.innerWidth <= 640;
@@ -2290,50 +2363,89 @@
         });
 
         function togglePlay() {
+            if (!audioPlayer) {
+                initAudioPlayer();
+            }
+            
             isPlaying = !isPlaying;
             const playBtn = document.getElementById('playBtn');
             playBtn.textContent = isPlaying ? '⏸' : '▶';
             
             if (isPlaying) {
+                audioPlayer.play();
                 startProgress();
             } else {
+                audioPlayer.pause();
                 stopProgress();
             }
         }
 
         function startProgress() {
+            // 清空旧的定时器
+            stopProgress();
             progressInterval = setInterval(() => {
-                currentProgress += 0.5;
-                if (currentProgress >= 100) {
-                    currentProgress = 0;
+                if (audioPlayer && audioPlayer.duration) {
+                    currentProgress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                    document.getElementById('progressBar').style.width = currentProgress + '%';
                 }
-                document.getElementById('progressBar').style.width = currentProgress + '%';
             }, 100);
         }
 
         function stopProgress() {
             if (progressInterval) {
                 clearInterval(progressInterval);
+                progressInterval = null;
             }
         }
 
+        function updateProgress() {
+            if (audioPlayer && audioPlayer.duration) {
+                currentProgress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                document.getElementById('progressBar').style.width = currentProgress + '%';
+            }
+        }
+
+        function updateDuration() {
+            // 歌曲加载完成后的回调
+        }
+
         function prevTrack() {
-            currentProgress = 0;
-            document.getElementById('progressBar').style.width = '0%';
+            currentTrackIndex--;
+            if (currentTrackIndex < 0) {
+                currentTrackIndex = playlist.length - 1;
+            }
+            loadTrack(currentTrackIndex);
+            if (isPlaying) {
+                audioPlayer.play();
+            }
         }
 
         function nextTrack() {
-            currentProgress = 0;
-            document.getElementById('progressBar').style.width = '0%';
+            currentTrackIndex++;
+            if (currentTrackIndex >= playlist.length) {
+                currentTrackIndex = 0;
+            }
+            loadTrack(currentTrackIndex);
+            if (isPlaying) {
+                audioPlayer.play();
+            }
         }
 
         function seekMusic(event) {
+            if (!audioPlayer || !audioPlayer.duration) return;
+            
             const progressBar = event.currentTarget;
             const rect = progressBar.getBoundingClientRect();
-            const percent = ((event.clientX - rect.left) / rect.width) * 100;
-            currentProgress = Math.max(0, Math.min(100, percent));
+            const percent = ((event.clientX - rect.left) / rect.width);
+            audioPlayer.currentTime = percent * audioPlayer.duration;
+            currentProgress = percent * 100;
             document.getElementById('progressBar').style.width = currentProgress + '%';
         }
+        
+        // 初始化播放器
+        document.addEventListener('DOMContentLoaded', function() {
+            initAudioPlayer();
+        });
     
         function toggleSubcategory(header) {
             const subcategory = header.closest('.subcategory');
