@@ -2167,103 +2167,51 @@
         
         function searchArticles() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            const allCategoriesView = document.getElementById('all-categories-view');
             const resultsContainer = document.getElementById('searchResults');
             
-            const singleViews = document.querySelectorAll('.single-category-view');
-            singleViews.forEach(view => view.style.display = 'none');
-            
-            // 先确保搜索结果下拉框隐藏
-            if (resultsContainer) {
-                resultsContainer.classList.remove('show');
-                resultsContainer.style.display = 'none';
-            }
-            
             if (searchTerm === '') {
-                // 清空搜索时：显示全部分类
-                allCategoriesView.style.display = 'flex';
-                allCategoriesView.style.flexDirection = 'column';
-                
-                // 移除搜索结果视图（如果存在）
-                const searchResultsView = document.getElementById('search-results-view');
-                if (searchResultsView) {
-                    searchResultsView.remove();
+                // 清空搜索时：隐藏搜索结果下拉框
+                if (resultsContainer) {
+                    resultsContainer.style.display = 'none';
                 }
                 return;
             }
             
-            // 有搜索词时：隐藏分类视图，显示搜索结果
-            allCategoriesView.style.display = 'none';
-            
+            // 有搜索词时：显示搜索结果下拉框
             const results = allArticles.filter(article => 
                 article.title.toLowerCase().includes(searchTerm)
             );
             
-            // 检查是否已经有搜索结果视图
-            let searchResultsView = document.getElementById('search-results-view');
-            if (!searchResultsView) {
-                searchResultsView = document.createElement('div');
-                searchResultsView.id = 'search-results-view';
-                searchResultsView.className = 'single-category-view';
-                document.getElementById('single-categories-container').appendChild(searchResultsView);
-            }
-            
-            // 显示搜索结果视图
-            searchResultsView.style.display = 'block';
-            
-            if (results.length === 0) {
-                searchResultsView.innerHTML = `
-                    <button class="back-btn" onclick="clearSearchAndGoBack()">← 返回全部分类</button>
-                    <div class="category-detail-header">
-                        <div class="detail-icon">🔍</div>
-                        <div class="detail-info">
-                            <h2 class="detail-title">搜索结果</h2>
-                            <p class="detail-desc">搜索关键词：${searchTerm}</p>
-                            <span class="detail-badge">0 篇文章</span>
+            if (resultsContainer) {
+                if (results.length === 0) {
+                    resultsContainer.innerHTML = `
+                        <div style="padding: 20px; text-align: center; color: #7A6F5F;">
+                            没有找到相关文章
                         </div>
-                    </div>
-                    <div class="subcategories-container">
-                        <div class="article-empty">
-                            <div class="empty-icon">😔</div>
-                            <div class="empty-text">没有找到相关文章</div>
-                        </div>
-                    </div>
-                `;
-            } else {
-                searchResultsView.innerHTML = `
-                    <button class="back-btn" onclick="clearSearchAndGoBack()">← 返回全部分类</button>
-                    <div class="category-detail-header">
-                        <div class="detail-icon">🔍</div>
-                        <div class="detail-info">
-                            <h2 class="detail-title">搜索结果</h2>
-                            <p class="detail-desc">搜索关键词：${searchTerm}</p>
-                            <span class="detail-badge">${results.length} 篇文章</span>
-                        </div>
-                    </div>
-                    <div class="subcategories-container">
-                        <div class="subcategory">
-                            <h4 class="subcategory-title">📁 相关文章</h4>
-                            <div class="article-list" style="display: flex; flex-direction: column; gap: 10px; max-height: none; opacity: 1;">
-                                ${results.map(article => `
-                                    <a href="${article.url}" target="_blank" class="article-item">
-                                        <div class="article-title">${article.title}</div>
-                                        <div class="article-meta">
-                                            <span class="article-date">未知日期</span>
-                                            <span class="article-tag">${article.category}</span>
-                                        </div>
-                                    </a>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </div>
-                `;
+                    `;
+                } else {
+                    resultsContainer.innerHTML = results.map(article => `
+                        <a href="${article.url}" target="_blank" style="display: block; padding: 12px 16px; text-decoration: none; color: #3D352A; border-bottom: 1px solid #f0f0f0; transition: background 0.2s;" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='transparent'">
+                            <div style="font-weight: 500; margin-bottom: 4px;">${article.title}</div>
+                            <div style="font-size: 12px; color: #7A6F5F;">${article.category}</div>
+                        </a>
+                    `).join('');
+                }
+                resultsContainer.style.display = 'block';
             }
         }
         
-        function clearSearchAndGoBack() {
-            document.getElementById('searchInput').value = '';
-            searchArticles();
-        }
+        // 点击页面其他地方关闭搜索结果
+        document.addEventListener('click', function(event) {
+            const searchInput = document.getElementById('searchInput');
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (searchInput && resultsContainer) {
+                if (!searchInput.contains(event.target) && !resultsContainer.contains(event.target)) {
+                    resultsContainer.style.display = 'none';
+                }
+            }
+        });
 
 
         const categoryIds = ["CAD / 天正","Adobe 软件","AI 工具","SU 软件","办公软件技巧","效率工具","电脑系统和软件","公众号运营","个人 / 娱乐类"];
