@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>州官点灯 - 音乐管理工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            background: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .card.active {
+            display: block;
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(17, 153, 142, 0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 6px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .steps {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .step-content p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .playlist {
+            display: grid;
+            gap: 15px;
+        }
+
+        .track-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .track-item:hover {
+            border-color: #667eea;
+        }
+
+        .track-info {
+            flex: 1;
+        }
+
+        .track-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .track-artist {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .track-cover {
+            font-size: 32px;
+            margin-right: 15px;
+        }
+
+        .track-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .drag-handle {
+            cursor: grab;
+            color: #999;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .drag-handle:active {
+            cursor: grabbing;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .output-area {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .output-area.show {
+            display: block;
+        }
+
+        .file-upload-zone {
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .file-upload-zone:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: #764ba2;
+        }
+
+        .file-upload-zone p {
+            color: #667eea;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .file-upload-zone small {
+            color: #999;
+        }
+
+        .preview-player {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .preview-player.show {
+            display: block;
+        }
+
+        .preview-player audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .preview-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 州官点灯 - 音乐管理工具</h1>
+            <p>添加新音乐 · 管理播放列表 · 生成更新文件</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('add')">➕ 添加音乐</button>
+            <button class="tab" onclick="showTab('list')">📋 播放列表</button>
+            <button class="tab" onclick="showTab('generate')">🚀 生成更新</button>
+            <button class="tab" onclick="showTab('guide')">📖 使用指南</button>
+        </div>
+
+        <!-- 添加音乐 -->
+        <div id="add" class="card active">
+            <h2>➕ 添加新音乐</h2>
+            <div id="addAlert" class="alert"></div>
+            
+            <div class="file-upload-zone" onclick="document.getElementById('musicFile').click()">
+                <p>🎵 点击这里选择音乐文件</p>
+                <p style="font-size: 14px;">或者直接拖拽文件到这里</p>
+                <small>支持 MP3、WAV、OGG 等格式</small>
+                <input type="file" id="musicFile" accept="audio/*" style="display: none;" onchange="handleFileSelect(event)">
+            </div>
+
+            <div id="previewPlayer" class="preview-player">
+                <div class="preview-title" id="previewTitle">预览</div>
+                <audio id="audioPreview" controls></audio>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <div class="form-group">
+                    <label for="songTitle">歌曲名称 *</label>
+                    <input type="text" id="songTitle" placeholder="请输入歌曲名称">
+                </div>
+
+                <div class="form-group">
+                    <label for="songArtist">艺术家 *</label>
+                    <input type="text" id="songArtist" placeholder="请输入艺术家名称" value="周深">
+                </div>
+
+                <div class="form-group">
+                    <label for="songCover">封面图标（emoji）</label>
+                    <input type="text" id="songCover" placeholder="选一个emoji，比如 🎵、🌸、✨" value="🎵">
+                    <p style="font-size: 12px; color: #666; margin-top: 5px;">常用：🎵 🎶 🌸 ✨ 🏯 🐟 🍃 🌺 🎤 🎼</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="fileName">文件名（自动生成，可修改）</label>
+                    <input type="text" id="fileName" placeholder="文件名">
+                    <p style="font-size: 12px; color: #666; margin-top: 5px;">建议格式：艺术家-歌曲名.mp3</p>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="addMusic()">添加到播放列表</button>
+                <button class="btn" onclick="clearAddForm()" style="background: #e0e0e0;">清空</button>
+            </div>
+        </div>
+
+        <!-- 播放列表 -->
+        <div id="list" class="card">
+            <h2>📋 播放列表管理</h2>
+            <div id="listAlert" class="alert"></div>
+            
+            <div id="playlistStats" class="stats-grid"></div>
+
+            <div id="playlist" class="playlist"></div>
+        </div>
+
+        <!-- 生成更新 -->
+        <div id="generate" class="card">
+            <h2>🚀 生成更新文件</h2>
+            <div id="generateAlert" class="alert"></div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>加载现有播放列表</h4>
+                        <p>选择你项目中的 music/playlist.json 文件</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>添加或调整音乐</h4>
+                        <p>在"添加音乐"和"播放列表"标签页操作</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>下载更新文件</h4>
+                        <p>下载 playlist.json 和音乐文件</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>替换并更新网站</h4>
+                        <p>替换文件后，还需要手动更新 index.html 里的播放列表</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="loadPlaylist">加载现有 playlist.json（可选）</label>
+                <input type="file" id="loadPlaylist" accept=".json" onchange="loadPlaylistFile(event)">
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-success" onclick="downloadPlaylist()">💾 下载 playlist.json</button>
+                <button class="btn btn-primary" onclick="generateIndexCode()">📋 生成 index.html 代码</button>
+            </div>
+
+            <div id="outputArea" class="output-area"></div>
+        </div>
+
+        <!-- 使用指南 -->
+        <div id="guide" class="card">
+            <h2>📖 完整使用指南</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">一</div>
+                    <div class="step-content">
+                        <h4>添加新音乐</h4>
+                        <p>1. 在"添加音乐"标签页选择音乐文件<br>
+                        2. 填写歌曲名、艺术家、封面图标<br>
+                        3. 点击"添加到播放列表"</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">二</div>
+                    <div class="step-content">
+                        <h4>管理播放列表</h4>
+                        <p>在"播放列表"标签页可以：<br>
+                        - 查看所有音乐<br>
+                        - 删除不需要的音乐<br>
+                        - 调整播放顺序（拖拽）</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">三</div>
+                    <div class="step-content">
+                        <h4>下载文件</h4>
+                        <p>在"生成更新"标签页：<br>
+                        1. 下载 playlist.json<br>
+                        2. 复制音乐文件到 music/ 文件夹</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">四</div>
+                    <div class="step-content">
+                        <h4>更新 index.html</h4>
+                        <p>重要！还需要手动更新 index.html 里的播放列表：<br>
+                        1. 点击"生成 index.html 代码"按钮<br>
+                        2. 复制生成的代码<br>
+                        3. 打开 index.html，找到 playlist 部分<br>
+                        4. 用新代码替换旧的播放列表</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">五</div>
+                    <div class="step-content">
+                        <h4>提交到 GitHub</h4>
+                        <p>git add index.html music/<br>
+                        git commit -m "更新音乐"<br>
+                        git push origin main</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let playlist = [];
+        let currentFileData = null;
+
+        // 切换标签
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+
+            if (tabId === 'list') {
+                renderPlaylist();
+            }
+        }
+
+        // 显示提示
+        function showAlert(elementId, message, type) {
+            const alert = document.getElementById(elementId);
+            alert.textContent = message;
+            alert.className = 'alert ' + type + ' show';
+            setTimeout(() => alert.classList.remove('show'), 4000);
+        }
+
+        // 处理文件选择
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            currentFileData = file;
+            
+            const fileName = file.name;
+            let title = fileName.replace(/\.[^/.]+$/, "");
+            let artist = "未知艺术家";
+
+            if (fileName.includes("-")) {
+                const parts = fileName.split("-");
+                artist = parts[0].trim();
+                title = parts[1].replace(/\.[^/.]+$/, "").trim();
+            }
+
+            document.getElementById('songTitle').value = title;
+            document.getElementById('songArtist').value = artist;
+            document.getElementById('fileName').value = artist + "-" + title + ".mp3";
+            document.getElementById('previewTitle').textContent = fileName;
+
+            const url = URL.createObjectURL(file);
+            document.getElementById('audioPreview').src = url;
+            document.getElementById('previewPlayer').classList.add('show');
+        }
+
+        // 添加音乐
+        function addMusic() {
+            const title = document.getElementById('songTitle').value.trim();
+            const artist = document.getElementById('songArtist').value.trim();
+            const cover = document.getElementById('songCover').value.trim() || "🎵";
+            const fileName = document.getElementById('fileName').value.trim();
+
+            if (!title || !artist) {
+                showAlert('addAlert', '请填写歌曲名称和艺术家！', 'error');
+                return;
+            }
+
+            const newTrack = {
+                title: title,
+                artist: artist,
+                cover: cover,
+                source: fileName ? "music/" + fileName : "",
+                _fileData: currentFileData
+            };
+
+            playlist.unshift(newTrack);
+            showAlert('addAlert', '✅ 已添加到播放列表！', 'success');
+            clearAddForm();
+        }
+
+        // 清空添加表单
+        function clearAddForm() {
+            document.getElementById('songTitle').value = '';
+            document.getElementById('songArtist').value = '周深';
+            document.getElementById('songCover').value = '🎵';
+            document.getElementById('fileName').value = '';
+            document.getElementById('musicFile').value = '';
+            document.getElementById('previewPlayer').classList.remove('show');
+            currentFileData = null;
+        }
+
+        // 渲染播放列表
+        function renderPlaylist() {
+            const container = document.getElementById('playlist');
+            const statsContainer = document.getElementById('playlistStats');
+
+            if (playlist.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🎵</div>
+                        <p>播放列表为空</p>
+                        <p style="font-size: 14px;">先去"添加音乐"标签页添加音乐吧！</p>
+                    </div>
+                `;
+                statsContainer.innerHTML = '';
+                return;
+            }
+
+            const artistCount = new Set(playlist.map(t => t.artist)).size;
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${playlist.length}</div>
+                    <div class="stat-label">总歌曲数</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                    <div class="stat-number">${artistCount}</div>
+                    <div class="stat-label">艺术家数</div>
+                </div>
+            `;
+
+            container.innerHTML = playlist.map((track, index) => `
+                <div class="track-item" draggable="true" data-index="${index}">
+                    <div style="display: flex; align-items: center;">
+                        <span class="drag-handle">☰</span>
+                        <span class="track-cover">${track.cover}</span>
+                        <div class="track-info">
+                            <div class="track-title">${escapeHtml(track.title)}</div>
+                            <div class="track-artist">${escapeHtml(track.artist)}</div>
+                        </div>
+                    </div>
+                    <div class="track-actions">
+                        <button class="btn btn-small btn-danger" onclick="removeTrack(${index})">删除</button>
+                        ${index > 0 ? `<button class="btn btn-small btn-primary" onclick="moveTrack(${index}, -1)">⬆️</button>` : ''}
+                        ${index < playlist.length - 1 ? `<button class="btn btn-small btn-primary" onclick="moveTrack(${index}, 1)">⬇️</button>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 删除歌曲
+        function removeTrack(index) {
+            if (confirm(`确定要删除《${playlist[index].title}》吗？`)) {
+                playlist.splice(index, 1);
+                renderPlaylist();
+                showAlert('listAlert', '✅ 已删除', 'success');
+            }
+        }
+
+        // 移动歌曲
+        function moveTrack(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= playlist.length) return;
+            
+            [playlist[index], playlist[newIndex]] = [playlist[newIndex], playlist[index]];
+            renderPlaylist();
+        }
+
+        // 加载播放列表文件
+        function loadPlaylistFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    playlist = JSON.parse(e.target.result);
+                    showAlert('generateAlert', '✅ 播放列表已加载！', 'success');
+                } catch (err) {
+                    showAlert('generateAlert', '❌ 文件解析失败：' + err.message, 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // 下载播放列表
+        function downloadPlaylist() {
+            if (playlist.length === 0) {
+                showAlert('generateAlert', '❌ 播放列表为空！', 'error');
+                return;
+            }
+
+            const forSave = playlist.map(track => ({
+                title: track.title,
+                artist: track.artist,
+                cover: track.cover,
+                source: track.source
+            }));
+
+            const blob = new Blob([JSON.stringify(forSave, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'playlist.json';
+            a.click();
+            URL.revokeObjectURL(url);
+
+            showAlert('generateAlert', '✅ playlist.json 已下载！', 'success');
+        }
+
+        // 生成 index.html 代码
+        function generateIndexCode() {
+            if (playlist.length === 0) {
+                showAlert('generateAlert', '❌ 播放列表为空！', 'error');
+                return;
+            }
+
+            const code = `        const playlist = [
+${playlist.map(track => `          {
+            "title": "${escapeJs(track.title)}",
+            "artist": "${escapeJs(track.artist)}",
+            "cover": "${escapeJs(track.cover)}",
+            "source": "${escapeJs(track.source)}"
+          }`).join(',\n')}
+        ];`;
+
+            const outputArea = document.getElementById('outputArea');
+            outputArea.textContent = code;
+            outputArea.classList.add('show');
+            
+            showAlert('generateAlert', '✅ 代码已生成，请复制后替换 index.html 中的 playlist 部分', 'info');
+        }
+
+        // 工具函数
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function escapeJs(text) {
+            return text.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n');
+        }
+
+        // 初始化
+        window.onload = function() {
+            playlist = [
+                {title: "蜃楼", artist: "周深", cover: "🏯", source: "music/周深-蜃楼.mp3"},
+                {title: "热烈盛开", artist: "周深", cover: "🌸", source: "music/周深-热烈盛开.mp3"},
+                {title: "光年之外", artist: "邓紫棋", cover: "🎤", source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"},
+                {title: "泡沫", artist: "邓紫棋", cover: "🎵", source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"},
+                {title: "回忆的沙漏", artist: "邓紫棋", cover: "🎼", source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"},
+                {title: "桃花诺", artist: "邓紫棋", cover: "🌸", source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"},
+                {title: "大鱼", artist: "周深", cover: "🐟", source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"},
+                {title: "起风了", artist: "周深", cover: "🍃", source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"},
+                {title: "光亮", artist: "周深", cover: "✨", source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"},
+                {title: "梅香如故", artist: "周深", cover: "🌺", source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"}
+            ];
+        };
+    </script>
+</body>
+</html>
