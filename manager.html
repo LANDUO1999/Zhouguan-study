@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>州官点灯 - 文章管理工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            background: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .card.active {
+            display: block;
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(17, 153, 142, 0.4);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .steps {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .step-content p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .article-list {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .article-item {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .article-item:hover {
+            background: #f8f9fa;
+        }
+
+        .article-item:last-child {
+            border-bottom: none;
+        }
+
+        .article-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .article-meta {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .badge-cad { background: #ff6b6b; color: white; }
+        .badge-su { background: #4ecdc4; color: white; }
+        .badge-adobe { background: #45b7d1; color: white; }
+        .badge-ppt { background: #96ceb4; color: white; }
+        .badge-ai { background: #dda0dd; color: white; }
+        .badge-system { background: #f7dc6f; color: #333; }
+        .badge-gzh { background: #85c1e9; color: white; }
+        .badge-life { background: #d7bde2; color: white; }
+
+        .output-area {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 州官点灯 - 文章管理工具</h1>
+            <p>小白专用 · 简单易用 · 无需写代码</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('add')">➕ 添加文章</button>
+            <button class="tab" onclick="showTab('list')">📋 文章列表</button>
+            <button class="tab" onclick="showTab('generate')">🚀 生成网站</button>
+            <button class="tab" onclick="showTab('guide')">📖 使用指南</button>
+        </div>
+
+        <!-- 添加文章 -->
+        <div id="add" class="card active">
+            <h2>➕ 添加新文章</h2>
+            <div id="addAlert" class="alert"></div>
+            
+            <div class="form-group">
+                <label for="articleTitle">文章标题 *</label>
+                <input type="text" id="articleTitle" placeholder="请输入文章标题">
+            </div>
+
+            <div class="form-group">
+                <label for="articleUrl">微信文章链接 *</label>
+                <input type="text" id="articleUrl" placeholder="请输入微信公众号文章链接">
+            </div>
+
+            <div class="form-group">
+                <label for="articleCategory">分类 *</label>
+                <select id="articleCategory">
+                    <option value="">请选择分类</option>
+                    <option value="CAD / 天正">CAD / 天正</option>
+                    <option value="SU 软件">SU 软件</option>
+                    <option value="Adobe 软件">Adobe 软件</option>
+                    <option value="办公软件技巧">办公软件技巧</option>
+                    <option value="AI 工具">AI 工具</option>
+                    <option value="效率工具">效率工具</option>
+                    <option value="电脑系统和软件">电脑系统和软件</option>
+                    <option value="公众号运营">公众号运营</option>
+                    <option value="个人 / 娱乐类">个人 / 娱乐类</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="articleSubcategory">子分类（可选）</label>
+                <input type="text" id="articleSubcategory" placeholder="如：基础操作、问题排查等">
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="addArticle()">添加文章</button>
+                <button class="btn" onclick="clearForm()" style="background: #e0e0e0;">清空表单</button>
+            </div>
+        </div>
+
+        <!-- 文章列表 -->
+        <div id="list" class="card">
+            <h2>📋 文章列表</h2>
+            <div class="form-group">
+                <input type="text" id="searchInput" placeholder="搜索文章标题..." oninput="searchArticles()">
+            </div>
+            <div id="articleList" class="article-list"></div>
+        </div>
+
+        <!-- 生成网站 -->
+        <div id="generate" class="card">
+            <h2>🚀 生成网站</h2>
+            
+            <div id="stats" class="stats-grid"></div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>加载文章数据库</h4>
+                        <p>点击下方按钮，选择你的 <code>articles-database.json</code> 文件</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>生成新的 index.html</h4>
+                        <p>工具会自动生成更新后的网站文件</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>下载并保存</h4>
+                        <p>下载生成的文件，替换项目中的旧文件</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>提交到 GitHub</h4>
+                        <p>用 Git 命令提交并推送更新</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dbFile">选择 articles-database.json 文件</label>
+                <input type="file" id="dbFile" accept=".json" onchange="loadDatabase()">
+            </div>
+
+            <div class="form-group">
+                <label for="indexFile">选择当前的 index.html 文件（可选，用于保留样式）</label>
+                <input type="file" id="indexFile" accept=".html">
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="generateWebsite()">生成网站文件</button>
+                <button class="btn btn-success" onclick="downloadDb()">下载数据库</button>
+            </div>
+
+            <div id="outputArea" class="output-area" style="margin-top: 20px; display: none;"></div>
+        </div>
+
+        <!-- 使用指南 -->
+        <div id="guide" class="card">
+            <h2>📖 完整使用指南</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">一</div>
+                    <div class="step-content">
+                        <h4>准备工作</h4>
+                        <p>确保你已经：<br>
+                        1. 安装了 Git<br>
+                        2. 从 GitHub 克隆了项目<br>
+                        3. 在 main 分支上</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">二</div>
+                    <div class="step-content">
+                        <h4>打开管理工具</h4>
+                        <p>双击项目文件夹里的 <code>manager.html</code>，用浏览器打开</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">三</div>
+                    <div class="step-content">
+                        <h4>添加文章</h4>
+                        <p>在"添加文章"标签页填写文章信息，然后下载更新后的数据库</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">四</div>
+                    <div class="step-content">
+                        <h4>生成网站</h4>
+                        <p>在"生成网站"标签页，选择数据库文件，生成新的 index.html</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">五</div>
+                    <div class="step-content">
+                        <h4>替换文件</h4>
+                        <p>用下载的文件替换项目里的旧文件</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">六</div>
+                    <div class="step-content">
+                        <h4>提交并推送</h4>
+                        <p>打开终端，运行：<br>
+                        <code>git add index.html articles-database.json</code><br>
+                        <code>git commit -m "更新文章"</code><br>
+                        <code>git push origin main</code></p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px; margin-bottom: 15px;">Git 命令速查</h3>
+            <div class="output-area">
+# 查看状态
+git status
+
+# 添加修改的文件
+git add index.html articles-database.json
+
+# 提交更改
+git commit -m "描述你的修改"
+
+# 推送到 GitHub
+git push origin main
+
+# 拉取最新更新
+git pull origin main
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let articlesDb = null;
+
+        // 切换标签
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+
+            if (tabId === 'list') {
+                loadArticleList();
+            }
+        }
+
+        // 显示提示
+        function showAlert(elementId, message, type) {
+            const alert = document.getElementById(elementId);
+            alert.textContent = message;
+            alert.className = 'alert ' + type + ' show';
+            setTimeout(() => alert.classList.remove('show'), 3000);
+        }
+
+        // 添加文章
+        function addArticle() {
+            const title = document.getElementById('articleTitle').value.trim();
+            const url = document.getElementById('articleUrl').value.trim();
+            const category = document.getElementById('articleCategory').value;
+            const subcategory = document.getElementById('articleSubcategory').value.trim();
+
+            if (!title || !url || !category) {
+                showAlert('addAlert', '请填写必填项！', 'error');
+                return;
+            }
+
+            if (!articlesDb) {
+                articlesDb = {
+                    totalArticles: 0,
+                    categoryStats: {},
+                    articles: []
+                };
+            }
+
+            const newArticle = {
+                url: url,
+                title: title,
+                category: category,
+                subcategory: subcategory || undefined
+            };
+
+            articlesDb.articles.unshift(newArticle);
+            articlesDb.totalArticles = articlesDb.articles.length;
+            
+            updateCategoryStats();
+            showAlert('addAlert', '✅ 文章添加成功！记得去"生成网站"标签页下载文件', 'success');
+            clearForm();
+        }
+
+        // 更新分类统计
+        function updateCategoryStats() {
+            if (!articlesDb) return;
+            articlesDb.categoryStats = {};
+            articlesDb.articles.forEach(article => {
+                articlesDb.categoryStats[article.category] = (articlesDb.categoryStats[article.category] || 0) + 1;
+            });
+        }
+
+        // 清空表单
+        function clearForm() {
+            document.getElementById('articleTitle').value = '';
+            document.getElementById('articleUrl').value = '';
+            document.getElementById('articleCategory').value = '';
+            document.getElementById('articleSubcategory').value = '';
+        }
+
+        // 加载文章列表
+        function loadArticleList() {
+            const listDiv = document.getElementById('articleList');
+            if (!articlesDb || articlesDb.articles.length === 0) {
+                listDiv.innerHTML = '<div style="padding: 30px; text-align: center; color: #999;">暂无文章，请先在"生成网站"标签页加载数据库</div>';
+                return;
+            }
+
+            listDiv.innerHTML = articlesDb.articles.map((article, index) => `
+                <div class="article-item">
+                    <div class="article-title">${escapeHtml(article.title)}</div>
+                    <div class="article-meta">
+                        <span class="badge badge-${getCategoryClass(article.category)}">${escapeHtml(article.category)}</span>
+                        ${article.subcategory ? `<span>${escapeHtml(article.subcategory)}</span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 搜索文章
+        function searchArticles() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const listDiv = document.getElementById('articleList');
+            
+            if (!articlesDb) return;
+
+            const filtered = articlesDb.articles.filter(article => 
+                article.title.toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                listDiv.innerHTML = '<div style="padding: 30px; text-align: center; color: #999;">没有找到匹配的文章</div>';
+                return;
+            }
+
+            listDiv.innerHTML = filtered.map((article, index) => `
+                <div class="article-item">
+                    <div class="article-title">${escapeHtml(article.title)}</div>
+                    <div class="article-meta">
+                        <span class="badge badge-${getCategoryClass(article.category)}">${escapeHtml(article.category)}</span>
+                        ${article.subcategory ? `<span>${escapeHtml(article.subcategory)}</span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 加载数据库
+        function loadDatabase() {
+            const fileInput = document.getElementById('dbFile');
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    articlesDb = JSON.parse(e.target.result);
+                    updateStats();
+                    showOutput('✅ 数据库加载成功！\n\n' + 
+                               `总文章数：${articlesDb.totalArticles}\n` + 
+                               `分类数：${Object.keys(articlesDb.categoryStats || {}).length}`);
+                } catch (err) {
+                    showOutput('❌ 数据库解析失败：' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // 更新统计
+        function updateStats() {
+            const statsDiv = document.getElementById('stats');
+            if (!articlesDb) {
+                statsDiv.innerHTML = '';
+                return;
+            }
+
+            let html = `
+                <div class="stat-card">
+                    <div class="stat-number">${articlesDb.totalArticles}</div>
+                    <div class="stat-label">总文章数</div>
+                </div>
+            `;
+
+            const stats = articlesDb.categoryStats || {};
+            for (const [cat, count] of Object.entries(stats)) {
+                html += `
+                    <div class="stat-card" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                        <div class="stat-number">${count}</div>
+                        <div class="stat-label">${cat}</div>
+                    </div>
+                `;
+            }
+
+            statsDiv.innerHTML = html;
+        }
+
+        // 生成网站
+        function generateWebsite() {
+            if (!articlesDb) {
+                showOutput('❌ 请先加载数据库文件！');
+                return;
+            }
+
+            showOutput('⏳ 正在生成网站文件...');
+
+            const indexFile = document.getElementById('indexFile').files[0];
+            
+            if (indexFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    generateFromTemplate(e.target.result);
+                };
+                reader.readAsText(indexFile);
+            } else {
+                generateSimpleHtml();
+            }
+        }
+
+        // 从模板生成
+        function generateFromTemplate(templateHtml) {
+            showOutput('✅ 使用现有模板生成...');
+            
+            const blob = new Blob([JSON.stringify(articlesDb, null, 2)], {type: 'application/json'});
+            const dbUrl = URL.createObjectURL(blob);
+            
+            const dbLink = document.createElement('a');
+            dbLink.href = dbUrl;
+            dbLink.download = 'articles-database.json';
+            dbLink.click();
+
+            showOutput('✅ 数据库已下载！\n\n' + 
+                       '由于现有 index.html 结构较复杂，建议：\n' + 
+                       '1. 用下载的 articles-database.json 替换原文件\n' + 
+                       '2. 手动在 index.html 中添加新文章的 HTML\n' + 
+                       '3. 或者参考 docs/ 里的文档手动更新');
+        }
+
+        // 生成简单 HTML
+        function generateSimpleHtml() {
+            const html = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>州官点灯学习 - 公众号文章</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft YaHei', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f5f5f5;
+        }
+        h1 { color: #333; text-align: center; margin-bottom: 30px; }
+        .article {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .article a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .article a:hover { text-decoration: underline; }
+        .article-meta {
+            margin-top: 10px;
+            color: #888;
+            font-size: 14px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            background: #667eea;
+            color: white;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📚 州官点灯学习</h1>
+    <p style="text-align: center; color: #666; margin-bottom: 30px;">共 ${articlesDb.totalArticles} 篇文章</p>
+    ${articlesDb.articles.map(article => `
+    <div class="article">
+        <a href="${escapeHtmlAttr(article.url)}" target="_blank">${escapeHtml(article.title)}</a>
+        <div class="article-meta">
+            <span class="badge">${escapeHtml(article.category)}</span>
+            ${article.subcategory ? escapeHtml(article.subcategory) : ''}
+        </div>
+    </div>
+    `).join('')}
+</body>
+</html>`;
+
+            downloadFile(html, 'index-simple.html', 'text/html');
+            downloadFile(JSON.stringify(articlesDb, null, 2), 'articles-database.json', 'application/json');
+            
+            showOutput('✅ 生成完成！\n\n' + 
+                       '已下载两个文件：\n' + 
+                       '1. index-simple.html - 简化版网站（可以直接用）\n' + 
+                       '2. articles-database.json - 更新后的数据库\n\n' + 
+                       '提示：如果想用原来的样式，请参考 docs/ 里的文档手动更新原 index.html');
+        }
+
+        // 下载数据库
+        function downloadDb() {
+            if (!articlesDb) {
+                showOutput('❌ 没有可下载的数据，请先添加文章或加载数据库');
+                return;
+            }
+            downloadFile(JSON.stringify(articlesDb, null, 2), 'articles-database.json', 'application/json');
+            showOutput('✅ 数据库已下载！');
+        }
+
+        // 下载文件
+        function downloadFile(content, filename, type) {
+            const blob = new Blob([content], {type: type});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // 显示输出
+        function showOutput(text) {
+            const output = document.getElementById('outputArea');
+            output.style.display = 'block';
+            output.textContent = text;
+        }
+
+        // 工具函数
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function escapeHtmlAttr(text) {
+            return text.replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+        }
+
+        function getCategoryClass(category) {
+            const map = {
+                'CAD / 天正': 'cad',
+                'SU 软件': 'su',
+                'Adobe 软件': 'adobe',
+                '办公软件技巧': 'ppt',
+                'AI 工具': 'ai',
+                '效率工具': 'ai',
+                '电脑系统和软件': 'system',
+                '公众号运营': 'gzh',
+                '个人 / 娱乐类': 'life'
+            };
+            return map[category] || 'life';
+        }
+
+        window.onload = function() {
+            showOutput('💡 提示：先在"添加文章"里添加文章，然后到"生成网站"下载文件');
+        };
+    </script>
+</body>
+</html>
