@@ -172,6 +172,12 @@
             border: 1px solid #f5c6cb;
         }
 
+        .alert.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
         .alert.show {
             display: block;
         }
@@ -371,7 +377,7 @@
             <div class="form-group">
                 <label for="articleSubcategory">子分类</label>
                 <select id="articleSubcategory">
-                    <option value="">请先选择分类</option>
+                    <option value="">请先加载数据库或选择分类</option>
                 </select>
                 <p class="subcategory-hint">或者可以手动输入新的子分类</p>
                 <input type="text" id="articleSubcategoryManual" placeholder="手动输入子分类（可选）" style="margin-top: 10px;">
@@ -403,7 +409,8 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h4>加载文章数据库</h4>
-                        <p>点击下方按钮，选择你的 <code>articles-database.json</code> 文件</p>
+                        <p>点击下方按钮，选择你的 <code>articles-database.json</code> 文件<br>
+                        <strong>重要：</strong>加载后会自动提取现有文章的子分类！</p>
                     </div>
                 </div>
                 <div class="step">
@@ -460,8 +467,11 @@
                 <div class="step">
                     <div class="step-number">二</div>
                     <div class="step-content">
-                        <h4>打开管理工具</h4>
-                        <p>双击项目文件夹里的 <code>manager.html</code>，用浏览器打开</p>
+                        <h4>先加载数据库！</h4>
+                        <p><strong>重要！</strong>第一次使用时：<br>
+                        1. 切换到"生成网站"标签<br>
+                        2. 加载你的 articles-database.json 文件<br>
+                        3. 这样工具就能自动提取出现有的子分类了！</p>
                     </div>
                 </div>
 
@@ -469,7 +479,7 @@
                     <div class="step-number">三</div>
                     <div class="step-content">
                         <h4>添加文章</h4>
-                        <p>在"添加文章"标签页填写文章信息（可以选择子分类），然后下载更新后的数据库</p>
+                        <p>在"添加文章"标签页填写文章信息，子分类会自动从现有数据中提取</p>
                     </div>
                 </div>
 
@@ -515,19 +525,7 @@ git pull origin main
 
     <script>
         let articlesDb = null;
-
-        // 子分类配置
-        const subcategories = {
-            "CAD / 天正": ["基础操作", "问题排查", "天正 / 快捷键", "进阶技巧", "三维建模"],
-            "SU 软件": ["基础操作", "建模技巧", "插件推荐"],
-            "Adobe 软件": ["Photoshop", "InDesign", "Illustrator", "通用技巧"],
-            "办公软件技巧": ["PPT", "Word", "Excel"],
-            "AI 工具": ["ChatGPT", "Midjourney", "其他AI工具"],
-            "效率工具": ["资源下载", "效率提升", "在线工具"],
-            "电脑系统和软件": ["Windows", "Mac", "软件推荐"],
-            "公众号运营": ["排版技巧", "运营心得"],
-            "个人 / 娱乐类": ["生活随想", "娱乐分享"]
-        };
+        let existingSubcategories = {}; // 存储从数据库提取的子分类
 
         // 切换标签
         function showTab(tabId) {
@@ -547,7 +545,40 @@ git pull origin main
             const alert = document.getElementById(elementId);
             alert.textContent = message;
             alert.className = 'alert ' + type + ' show';
-            setTimeout(() => alert.classList.remove('show'), 3000);
+            setTimeout(() => alert.classList.remove('show'), 4000);
+        }
+
+        // 从数据库提取子分类
+        function extractSubcategories() {
+            if (!articlesDb || !articlesDb.articles) return;
+            
+            existingSubcategories = {};
+            
+            articlesDb.articles.forEach(article => {
+                const category = article.category;
+                const subcategory = article.subcategory;
+                
+                if (category && subcategory) {
+                    if (!existingSubcategories[category]) {
+                        existingSubcategories[category] = new Set();
+                    }
+                    existingSubcategories[category].add(subcategory);
+                }
+            });
+
+            let subcategoryCount = 0;
+            for (const cat in existingSubcategories) {
+                subcategoryCount += existingSubcategories[cat].size;
+                existingSubcategories[cat] = Array.from(existingSubcategories[cat]).sort();
+            }
+            
+            showOutput(`✅ 已从数据库提取子分类！\n\n` +
+                       `分类数：${Object.keys(existingSubcategories).length}\n` +
+                       `子分类总数：${subcategoryCount}\n\n` +
+                       `详情：\n` +
+                       Object.entries(existingSubcategories).map(([cat, subs]) => 
+                         `  ${cat}: ${subs.join(', ')}`
+                       ).join('\n'));
         }
 
         // 更新子分类选项
@@ -555,13 +586,25 @@ git pull origin main
             const category = document.getElementById('articleCategory').value;
             const subcategorySelect = document.getElementById('articleSubcategory');
             
-            if (!category || !subcategories[category]) {
-                subcategorySelect.innerHTML = '<option value="">无子分类可选</option>';
+            if (!category) {
+                subcategorySelect.innerHTML = '<option value="">请先选择分类</option>';
+                return;
+            }
+
+            if (!articlesDb) {
+                subcategorySelect.innerHTML = '<option value="">请先在"生成网站"标签页加载数据库</option>';
+                return;
+            }
+
+            const subs = existingSubcategories[category];
+            
+            if (!subs || subs.length === 0) {
+                subcategorySelect.innerHTML = '<option value="">该分类暂无现有子分类</option>';
                 return;
             }
 
             let options = '<option value="">不选择子分类</option>';
-            subcategories[category].forEach(sub => {
+            subs.forEach(sub => {
                 options += `<option value="${escapeHtmlAttr(sub)}">${escapeHtml(sub)}</option>`;
             });
             
@@ -589,7 +632,6 @@ git pull origin main
                 };
             }
 
-            // 确定子分类：优先用手动输入的，没有则用下拉选择的
             let subcategory = subcategoryManual || subcategorySelect || undefined;
 
             const newArticle = {
@@ -603,6 +645,17 @@ git pull origin main
             articlesDb.totalArticles = articlesDb.articles.length;
             
             updateCategoryStats();
+            
+            if (subcategory && category) {
+                if (!existingSubcategories[category]) {
+                    existingSubcategories[category] = [];
+                }
+                if (!existingSubcategories[category].includes(subcategory)) {
+                    existingSubcategories[category].push(subcategory);
+                    existingSubcategories[category].sort();
+                }
+            }
+            
             showAlert('addAlert', '✅ 文章添加成功！记得去"生成网站"标签页下载文件', 'success');
             clearForm();
         }
@@ -621,7 +674,7 @@ git pull origin main
             document.getElementById('articleTitle').value = '';
             document.getElementById('articleUrl').value = '';
             document.getElementById('articleCategory').value = '';
-            document.getElementById('articleSubcategory').innerHTML = '<option value="">请先选择分类</option>';
+            document.getElementById('articleSubcategory').innerHTML = '<option value="">请先加载数据库或选择分类</option>';
             document.getElementById('articleSubcategoryManual').value = '';
         }
 
@@ -681,10 +734,9 @@ git pull origin main
             reader.onload = function(e) {
                 try {
                     articlesDb = JSON.parse(e.target.result);
+                    extractSubcategories();
                     updateStats();
-                    showOutput('✅ 数据库加载成功！\n\n' + 
-                               `总文章数：${articlesDb.totalArticles}\n` + 
-                               `分类数：${Object.keys(articlesDb.categoryStats || {}).length}`);
+                    showAlert('addAlert', '✅ 数据库加载成功！子分类已自动提取', 'info');
                 } catch (err) {
                     showOutput('❌ 数据库解析失败：' + err.message);
                 }
@@ -772,7 +824,7 @@ git pull origin main
         }
 
         window.onload = function() {
-            showOutput('💡 提示：先在"添加文章"里添加文章，然后到"生成网站"下载文件');
+            showOutput('💡 提示：请先在"生成网站"标签页加载数据库，这样就能自动提取现有子分类了！');
         };
     </script>
 </body>
