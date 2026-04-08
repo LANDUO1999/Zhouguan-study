@@ -315,6 +315,12 @@
             font-family: 'Courier New', monospace;
             font-size: 13px;
         }
+
+        .subcategory-hint {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -348,7 +354,7 @@
 
             <div class="form-group">
                 <label for="articleCategory">分类 *</label>
-                <select id="articleCategory">
+                <select id="articleCategory" onchange="updateSubcategoryOptions()">
                     <option value="">请选择分类</option>
                     <option value="CAD / 天正">CAD / 天正</option>
                     <option value="SU 软件">SU 软件</option>
@@ -363,8 +369,12 @@
             </div>
 
             <div class="form-group">
-                <label for="articleSubcategory">子分类（可选）</label>
-                <input type="text" id="articleSubcategory" placeholder="如：基础操作、问题排查等">
+                <label for="articleSubcategory">子分类</label>
+                <select id="articleSubcategory">
+                    <option value="">请先选择分类</option>
+                </select>
+                <p class="subcategory-hint">或者可以手动输入新的子分类</p>
+                <input type="text" id="articleSubcategoryManual" placeholder="手动输入子分类（可选）" style="margin-top: 10px;">
             </div>
 
             <div class="btn-group">
@@ -399,15 +409,15 @@
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h4>生成新的 index.html</h4>
-                        <p>工具会自动生成更新后的网站文件</p>
+                        <h4>下载更新后的数据库</h4>
+                        <p>下载生成的文件，替换项目中的旧文件</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <h4>下载并保存</h4>
-                        <p>下载生成的文件，替换项目中的旧文件</p>
+                        <h4>手动更新 index.html</h4>
+                        <p>在 index.html 中添加新文章的 HTML</p>
                     </div>
                 </div>
                 <div class="step">
@@ -424,14 +434,8 @@
                 <input type="file" id="dbFile" accept=".json" onchange="loadDatabase()">
             </div>
 
-            <div class="form-group">
-                <label for="indexFile">选择当前的 index.html 文件（可选，用于保留样式）</label>
-                <input type="file" id="indexFile" accept=".html">
-            </div>
-
             <div class="btn-group">
-                <button class="btn btn-primary" onclick="generateWebsite()">生成网站文件</button>
-                <button class="btn btn-success" onclick="downloadDb()">下载数据库</button>
+                <button class="btn btn-primary" onclick="downloadDb()">下载数据库</button>
             </div>
 
             <div id="outputArea" class="output-area" style="margin-top: 20px; display: none;"></div>
@@ -465,20 +469,12 @@
                     <div class="step-number">三</div>
                     <div class="step-content">
                         <h4>添加文章</h4>
-                        <p>在"添加文章"标签页填写文章信息，然后下载更新后的数据库</p>
+                        <p>在"添加文章"标签页填写文章信息（可以选择子分类），然后下载更新后的数据库</p>
                     </div>
                 </div>
 
                 <div class="step">
                     <div class="step-number">四</div>
-                    <div class="step-content">
-                        <h4>生成网站</h4>
-                        <p>在"生成网站"标签页，选择数据库文件，生成新的 index.html</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">五</div>
                     <div class="step-content">
                         <h4>替换文件</h4>
                         <p>用下载的文件替换项目里的旧文件</p>
@@ -486,7 +482,7 @@
                 </div>
 
                 <div class="step">
-                    <div class="step-number">六</div>
+                    <div class="step-number">五</div>
                     <div class="step-content">
                         <h4>提交并推送</h4>
                         <p>打开终端，运行：<br>
@@ -520,6 +516,19 @@ git pull origin main
     <script>
         let articlesDb = null;
 
+        // 子分类配置
+        const subcategories = {
+            "CAD / 天正": ["基础操作", "问题排查", "天正 / 快捷键", "进阶技巧", "三维建模"],
+            "SU 软件": ["基础操作", "建模技巧", "插件推荐"],
+            "Adobe 软件": ["Photoshop", "InDesign", "Illustrator", "通用技巧"],
+            "办公软件技巧": ["PPT", "Word", "Excel"],
+            "AI 工具": ["ChatGPT", "Midjourney", "其他AI工具"],
+            "效率工具": ["资源下载", "效率提升", "在线工具"],
+            "电脑系统和软件": ["Windows", "Mac", "软件推荐"],
+            "公众号运营": ["排版技巧", "运营心得"],
+            "个人 / 娱乐类": ["生活随想", "娱乐分享"]
+        };
+
         // 切换标签
         function showTab(tabId) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -541,12 +550,31 @@ git pull origin main
             setTimeout(() => alert.classList.remove('show'), 3000);
         }
 
+        // 更新子分类选项
+        function updateSubcategoryOptions() {
+            const category = document.getElementById('articleCategory').value;
+            const subcategorySelect = document.getElementById('articleSubcategory');
+            
+            if (!category || !subcategories[category]) {
+                subcategorySelect.innerHTML = '<option value="">无子分类可选</option>';
+                return;
+            }
+
+            let options = '<option value="">不选择子分类</option>';
+            subcategories[category].forEach(sub => {
+                options += `<option value="${escapeHtmlAttr(sub)}">${escapeHtml(sub)}</option>`;
+            });
+            
+            subcategorySelect.innerHTML = options;
+        }
+
         // 添加文章
         function addArticle() {
             const title = document.getElementById('articleTitle').value.trim();
             const url = document.getElementById('articleUrl').value.trim();
             const category = document.getElementById('articleCategory').value;
-            const subcategory = document.getElementById('articleSubcategory').value.trim();
+            const subcategorySelect = document.getElementById('articleSubcategory').value;
+            const subcategoryManual = document.getElementById('articleSubcategoryManual').value.trim();
 
             if (!title || !url || !category) {
                 showAlert('addAlert', '请填写必填项！', 'error');
@@ -561,11 +589,14 @@ git pull origin main
                 };
             }
 
+            // 确定子分类：优先用手动输入的，没有则用下拉选择的
+            let subcategory = subcategoryManual || subcategorySelect || undefined;
+
             const newArticle = {
                 url: url,
                 title: title,
                 category: category,
-                subcategory: subcategory || undefined
+                subcategory: subcategory
             };
 
             articlesDb.articles.unshift(newArticle);
@@ -590,7 +621,8 @@ git pull origin main
             document.getElementById('articleTitle').value = '';
             document.getElementById('articleUrl').value = '';
             document.getElementById('articleCategory').value = '';
-            document.getElementById('articleSubcategory').value = '';
+            document.getElementById('articleSubcategory').innerHTML = '<option value="">请先选择分类</option>';
+            document.getElementById('articleSubcategoryManual').value = '';
         }
 
         // 加载文章列表
@@ -680,126 +712,12 @@ git pull origin main
                 html += `
                     <div class="stat-card" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
                         <div class="stat-number">${count}</div>
-                        <div class="stat-label">${cat}</div>
+                        <div class="stat-label">${escapeHtml(cat)}</div>
                     </div>
                 `;
             }
 
             statsDiv.innerHTML = html;
-        }
-
-        // 生成网站
-        function generateWebsite() {
-            if (!articlesDb) {
-                showOutput('❌ 请先加载数据库文件！');
-                return;
-            }
-
-            showOutput('⏳ 正在生成网站文件...');
-
-            const indexFile = document.getElementById('indexFile').files[0];
-            
-            if (indexFile) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    generateFromTemplate(e.target.result);
-                };
-                reader.readAsText(indexFile);
-            } else {
-                generateSimpleHtml();
-            }
-        }
-
-        // 从模板生成
-        function generateFromTemplate(templateHtml) {
-            showOutput('✅ 使用现有模板生成...');
-            
-            const blob = new Blob([JSON.stringify(articlesDb, null, 2)], {type: 'application/json'});
-            const dbUrl = URL.createObjectURL(blob);
-            
-            const dbLink = document.createElement('a');
-            dbLink.href = dbUrl;
-            dbLink.download = 'articles-database.json';
-            dbLink.click();
-
-            showOutput('✅ 数据库已下载！\n\n' + 
-                       '由于现有 index.html 结构较复杂，建议：\n' + 
-                       '1. 用下载的 articles-database.json 替换原文件\n' + 
-                       '2. 手动在 index.html 中添加新文章的 HTML\n' + 
-                       '3. 或者参考 docs/ 里的文档手动更新');
-        }
-
-        // 生成简单 HTML
-        function generateSimpleHtml() {
-            const html = `<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>州官点灯学习 - 公众号文章</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft YaHei', sans-serif;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background: #f5f5f5;
-        }
-        h1 { color: #333; text-align: center; margin-bottom: 30px; }
-        .article {
-            background: white;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .article a {
-            color: #667eea;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-        }
-        .article a:hover { text-decoration: underline; }
-        .article-meta {
-            margin-top: 10px;
-            color: #888;
-            font-size: 14px;
-        }
-        .badge {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-            background: #667eea;
-            color: white;
-            margin-right: 8px;
-        }
-    </style>
-</head>
-<body>
-    <h1>📚 州官点灯学习</h1>
-    <p style="text-align: center; color: #666; margin-bottom: 30px;">共 ${articlesDb.totalArticles} 篇文章</p>
-    ${articlesDb.articles.map(article => `
-    <div class="article">
-        <a href="${escapeHtmlAttr(article.url)}" target="_blank">${escapeHtml(article.title)}</a>
-        <div class="article-meta">
-            <span class="badge">${escapeHtml(article.category)}</span>
-            ${article.subcategory ? escapeHtml(article.subcategory) : ''}
-        </div>
-    </div>
-    `).join('')}
-</body>
-</html>`;
-
-            downloadFile(html, 'index-simple.html', 'text/html');
-            downloadFile(JSON.stringify(articlesDb, null, 2), 'articles-database.json', 'application/json');
-            
-            showOutput('✅ 生成完成！\n\n' + 
-                       '已下载两个文件：\n' + 
-                       '1. index-simple.html - 简化版网站（可以直接用）\n' + 
-                       '2. articles-database.json - 更新后的数据库\n\n' + 
-                       '提示：如果想用原来的样式，请参考 docs/ 里的文档手动更新原 index.html');
         }
 
         // 下载数据库
@@ -808,19 +726,16 @@ git pull origin main
                 showOutput('❌ 没有可下载的数据，请先添加文章或加载数据库');
                 return;
             }
-            downloadFile(JSON.stringify(articlesDb, null, 2), 'articles-database.json', 'application/json');
-            showOutput('✅ 数据库已下载！');
-        }
-
-        // 下载文件
-        function downloadFile(content, filename, type) {
-            const blob = new Blob([content], {type: type});
+            
+            const blob = new Blob([JSON.stringify(articlesDb, null, 2)], {type: 'application/json'});
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = filename;
+            a.download = 'articles-database.json';
             a.click();
             URL.revokeObjectURL(url);
+            
+            showOutput('✅ 数据库已下载！');
         }
 
         // 显示输出
