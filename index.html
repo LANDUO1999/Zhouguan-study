@@ -1139,26 +1139,71 @@
         document.addEventListener('DOMContentLoaded', loadArticles);
 
         let isPlaying = false;
-        let progressInterval = null;
+        let currentTrackIndex = 0;
+        let playlist = [];
+        const audio = new Audio();
         const progressBar = document.getElementById('progressBar');
+        
+        async function loadPlaylist() {
+            try {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'music/playlist.json', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 0 || xhr.status === 200) {
+                            try {
+                                playlist = JSON.parse(xhr.responseText);
+                                if (playlist.length > 0) {
+                                    loadTrack(0);
+                                }
+                            } catch (e) {
+                                console.error('Failed to load playlist:', e);
+                            }
+                        }
+                    }
+                };
+                xhr.send();
+            } catch (e) {
+                console.error('Failed to load playlist:', e);
+            }
+        }
+        
+        function loadTrack(index) {
+            if (playlist.length === 0) return;
+            currentTrackIndex = index;
+            const track = playlist[index];
+            document.getElementById('musicCover').innerHTML = track.cover || '🎵';
+            document.getElementById('musicSong').innerHTML = track.title;
+            document.getElementById('musicArtist').innerHTML = track.artist;
+            audio.src = track.source;
+            audio.load();
+            if (isPlaying) {
+                audio.play();
+            }
+        }
         
         function togglePlay() {
             const btn = document.getElementById('playBtn');
+            if (playlist.length === 0) return;
+            
             if (isPlaying) {
+                audio.pause();
                 btn.innerHTML = '▶';
                 isPlaying = false;
-                clearInterval(progressInterval);
             } else {
+                audio.play();
                 btn.innerHTML = '⏸';
                 isPlaying = true;
-                progressInterval = setInterval(() => {
-                    const currentWidth = parseFloat(progressBar.style.width) || 0;
-                    if (currentWidth >= 100) {
-                        progressBar.style.width = '0%';
-                    } else {
-                        progressBar.style.width = (currentWidth + 0.5) + '%';
-                    }
-                }, 100);
+            }
+        }
+        
+        audio.addEventListener('timeupdate', updateProgress);
+        audio.addEventListener('ended', nextTrack);
+        
+        function updateProgress() {
+            if (audio.duration > 0) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = percent + '%';
             }
         }
         
@@ -1166,16 +1211,23 @@
             const progress = document.querySelector('.music-progress');
             const rect = progress.getBoundingClientRect();
             const percent = (event.clientX - rect.left) / rect.width;
-            progressBar.style.width = Math.max(0, Math.min(100, percent * 100)) + '%';
+            audio.currentTime = percent * audio.duration;
+            progressBar.style.width = percent * 100 + '%';
         }
         
         function prevTrack() {
-            progressBar.style.width = '0%';
+            if (playlist.length === 0) return;
+            currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrackIndex);
         }
         
         function nextTrack() {
-            progressBar.style.width = '0%';
+            if (playlist.length === 0) return;
+            currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+            loadTrack(currentTrackIndex);
         }
+        
+        document.addEventListener('DOMContentLoaded', loadPlaylist);
     </script>
 </body>
 </html>

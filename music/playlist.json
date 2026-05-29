@@ -3,60 +3,30 @@
     "title": "蜃楼",
     "artist": "周深",
     "cover": "🏯",
-    "source": "music/周深-蜃楼.mp3"
+    "source": "music/蜃楼-周深.mp3"
   },
   {
     "title": "热烈盛开",
     "artist": "周深",
     "cover": "🌸",
-    "source": "music/周深-热烈盛开.mp3"
+    "source": "music/热烈盛开-周深.mp3"
   },
   {
-    "title": "光年之外",
-    "artist": "邓紫棋",
-    "cover": "🎤",
-    "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    "title": "不如逃吧",
+    "artist": "呜米咩栗",
+    "cover": "🎶",
+    "source": "music/不如逃吧-呜米咩栗.m4a"
   },
   {
-    "title": "泡沫",
-    "artist": "邓紫棋",
+    "title": "你为什么哭",
+    "artist": "傅菁",
     "cover": "🎵",
-    "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    "source": "music/你为什么哭-傅菁.m4a"
   },
   {
-    "title": "回忆的沙漏",
-    "artist": "邓紫棋",
-    "cover": "🎼",
-    "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-  },
-  {
-    "title": "桃花诺",
-    "artist": "邓紫棋",
-    "cover": "🌸",
-    "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
-  },
-  {
-    "title": "大鱼",
-    "artist": "周深",
-    "cover": "🐟",
-    "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
-  },
-  {
-    "title": "起风了",
-    "artist": "周深",
-    "cover": "🍃",
-    "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
-  },
-  {
-    "title": "光亮",
-    "artist": "周深",
-    "cover": "✨",
-    "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
-  },
-  {
-    "title": "梅香如故",
-    "artist": "周深",
-    "cover": "🌺",
-    "source": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
+    "title": "銀の龍の背に乗って",
+    "artist": "中岛美雪",
+    "cover": "🐉",
+    "source": "music/銀の龍の背に乗って-中岛美雪 .m4a"
   }
 ]
