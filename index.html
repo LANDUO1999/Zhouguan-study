@@ -944,6 +944,13 @@
                 <img src="images/qrcode.jpg" alt="公众号二维码" style="width: 150px; height: 150px; border-radius: 8px;">
             </div>
         </div>
+        
+        <div class="mobile-qrcode">
+            <div class="qrcode-box">
+                <div class="qrcode-title">扫码关注公众号</div>
+                <img src="images/qrcode.jpg" alt="公众号二维码" style="width: 150px; height: 150px; border-radius: 8px;">
+            </div>
+        </div>
     </div>
     
     <script>
@@ -1034,6 +1041,20 @@
                     subcategories[subcat] = [];
                 }
                 subcategories[subcat].push(article);
+            });
+            
+            Object.keys(subcategories).forEach(subcat => {
+                subcategories[subcat].sort((a, b) => {
+                    const titleA = (a.title || '').toLowerCase();
+                    const titleB = (b.title || '').toLowerCase();
+                    if (titleA !== titleB) {
+                        return titleA.localeCompare(titleB, 'zh-CN');
+                    } else {
+                        const dateA = a.date ? new Date(a.date) : new Date(0);
+                        const dateB = b.date ? new Date(b.date) : new Date(0);
+                        return dateB - dateA;
+                    }
+                });
             });
 
             const icon = categoryIcons[category] || categoryIcons['默认'];
