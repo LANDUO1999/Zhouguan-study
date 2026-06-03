@@ -1073,43 +1073,13 @@
                 subcategories[subcat].push(article);
             });
             
-            // 对每个子分类的文章排序
-            // 前三个分类（CAD / 天正、Adobe 软件、AI 工具）按标题字母顺序，同标题按日期
-            // 其他分类按日期从新到旧排序
-            const topThreeCategories = ['CAD / 天正', 'Adobe 软件', 'AI 工具'];
-            const isTopCategory = topThreeCategories.includes(category);
-            
-            console.log(`=== 排序调试信息 ===`);
-            console.log(`当前分类: "${category}"`);
-            console.log(`是否前三个分类: ${isTopCategory}`);
-            console.log(`排序方式: ${isTopCategory ? '标题字母顺序' : '日期从新到旧'}`);
-            
+            // 对每个子分类的文章排序：所有分类按日期从新到旧排序
             for (const subcat of Object.keys(subcategories)) {
-                console.log(`子分类: ${subcat}, 排序前:`, subcategories[subcat].map(a => `${a.title}(${a.date})`));
-                
-                if (isTopCategory) {
-                    // 前三个分类：按标题字母顺序，同标题按日期
-                    subcategories[subcat].sort((a, b) => {
-                        const titleA = (a.title || '').toLowerCase();
-                        const titleB = (b.title || '').toLowerCase();
-                        if (titleA !== titleB) {
-                            return titleA.localeCompare(titleB, 'zh-CN');
-                        } else {
-                            const dateA = a.date ? new Date(a.date).getTime() : 0;
-                            const dateB = b.date ? new Date(b.date).getTime() : 0;
-                            return dateB - dateA;
-                        }
-                    });
-                } else {
-                    // 其他分类：按日期从新到旧排序
-                    subcategories[subcat].sort((a, b) => {
-                        const dateA = a.date ? new Date(a.date).getTime() : 0;
-                        const dateB = b.date ? new Date(b.date).getTime() : 0;
-                        return dateB - dateA;
-                    });
-                }
-                
-                console.log(`子分类: ${subcat}, 排序后:`, subcategories[subcat].map(a => `${a.title}(${a.date})`));
+                subcategories[subcat].sort((a, b) => {
+                    const dateA = a.date ? new Date(a.date).getTime() : 0;
+                    const dateB = b.date ? new Date(b.date).getTime() : 0;
+                    return dateB - dateA;
+                });
             }
 
             const icon = categoryIcons[category] || categoryIcons['默认'];
