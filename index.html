@@ -858,9 +858,116 @@
             font-size: 14px;
             margin-left: 10px;
         }
+
+        .notification-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .notification-overlay.hidden {
+            display: none;
+        }
+
+        .notification-modal {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(198, 123, 92, 0.3);
+            text-align: center;
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--accent-terracotta);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notification-modal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-terracotta), var(--accent-gold), var(--accent-sage));
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .notification-icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .notification-title {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: 24px;
+            color: var(--accent-terracotta);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .notification-text {
+            font-size: 15px;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            padding: 0 8px;
+        }
+
+        .notification-close-btn {
+            padding: 12px 40px;
+            background: linear-gradient(135deg, var(--accent-terracotta) 0%, var(--accent-gold) 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Serif SC', serif;
+            box-shadow: 0 4px 15px rgba(198, 123, 92, 0.3);
+        }
+
+        .notification-close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(198, 123, 92, 0.4);
+        }
+
+        .notification-close-btn:active {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
+    <div class="notification-overlay" id="notificationOverlay">
+        <div class="notification-modal">
+            <div class="notification-icon">🔔</div>
+            <div class="notification-title">重要公告</div>
+            <div class="notification-text">由于公众号被投诉封禁，州官正在寻找异世界转生地，转生后会第一时间在这里公告。</div>
+            <button class="notification-close-btn" onclick="closeNotification()">我知道了</button>
+        </div>
+    </div>
+    
     <div class="main-layout">
         <aside class="sidebar">
             <div class="sidebar-content">
