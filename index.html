@@ -1443,6 +1443,13 @@
         
         // 页面加载完成后自动加载播放列表
         document.addEventListener('DOMContentLoaded', loadPlaylist);
+
+        function closeNotification() {
+            const overlay = document.getElementById('notificationOverlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
